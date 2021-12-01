@@ -1,3 +1,7 @@
+Current to-do list
+1. Find a decent image icon!!!
+
+
 General Parts:
 
 1. Back-end Implementation
