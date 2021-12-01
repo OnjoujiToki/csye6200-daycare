@@ -2,7 +2,7 @@ General Parts:
 
 1. Back-end Implementation
 
-   - Obejects
+   - Objects
 
      1. Students.
 
