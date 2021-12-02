@@ -1,7 +1,12 @@
 Current to-do list
 1. Find a decent image icon!!!
+2. add copyrights and license label in the login view
+3. add "tap Enter to login function" and also " tap Enter to Confirm function"
 
 
+
+To-do at the end
+1. add As many as final we can
 General Parts:
 
 1. Back-end Implementation

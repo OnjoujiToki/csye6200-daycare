@@ -11,8 +11,6 @@ public class BorderLayoutTest extends  JFrame {
     JTextArea lastNameEditor = new JTextArea("Input Last Name here", 10,20);
     JTextArea firstNameEditior = new JTextArea("Input First Name here",10,20);
     public BorderLayoutTest() {
-
-
         Container contentPane = window.getContentPane();
         contentPane.add(enrollButton);
 

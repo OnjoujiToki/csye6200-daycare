@@ -1,5 +1,7 @@
 package edu.neu.csye6200.students.view;
 
+import buttonEvents.LoginClick;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -18,7 +20,6 @@ label.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
 list.setFont(new Font("Helvetica Neue", Font.PLAIN, 12));
  */
 public class LoginView extends JFrame {
-    JFrame window = new JFrame("DayCare System");
 
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
     // borderoutlayout + jpanel
@@ -29,11 +30,13 @@ public class LoginView extends JFrame {
     JLabel userNameLabel = new JLabel("UserName:");
     JPasswordField passwordField = new JPasswordField();
     JButton loginButton = new JButton("Login");
-    JButton resetButton = new JButton("Reset");
+    LoginClick loginCLickEvents = new LoginClick(this);
+
     TrayIcon trayIcon;
     SystemTray systemTray;
     public LoginView() {
-        Container contentPane = window.getContentPane();
+        super("Day Care System");
+        Container contentPane = getContentPane();
         fontSizeInitialization();
         SpringLayoutSetup();
         contentPaneAdd(contentPane);
@@ -52,15 +55,15 @@ public class LoginView extends JFrame {
             System.out.println("Security expception for Taskbar.setIconImage");
         }
         // set icon image for Windows operating system;
-        window.setIconImage(iconImage);
+        setIconImage(iconImage);
 
         // set window
-        window.setSize(600, 400); // in px
-        window.setVisible(true);
-        window.setResizable(false); // make it nonchangeable
-        window.setDefaultCloseOperation(window.EXIT_ON_CLOSE); // exit when closing
+        setSize(600, 400); // in px
+        setVisible(true);
+        setResizable(false); // make it nonchangeable
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // exit when closing
         Dimension curScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        window.setLocation((curScreenSize.width - 600) / 2, (curScreenSize.height - 400) / 2);
+        setLocation((curScreenSize.width - 600) / 2, (curScreenSize.height - 400) / 2);
 
         // System Tray Support for Windows
         SystemTraySupportWindowsOS(iconImage);
@@ -121,7 +124,9 @@ public class LoginView extends JFrame {
         SpringPanel.add(passwordLabel);
         SpringPanel.add(passwordField);
         SpringPanel.add(loginButton);
-
+        loginButton.addActionListener(loginCLickEvents);
+        //loginButton.addKeyListener(loginCLickEvents);
+        getRootPane().setDefaultButton(loginButton);
         Spring lineWidth = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userField)), Spring.constant(20));
         int buttonPos = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userField)), Spring.constant(-140)).getValue()/2;
         springLayout.putConstraint(SpringLayout.WEST, userNameLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
@@ -135,4 +140,18 @@ public class LoginView extends JFrame {
         springLayout.putConstraint(SpringLayout.WEST, loginButton, buttonPos, SpringLayout.HORIZONTAL_CENTER, passwordLabel);
         springLayout.putConstraint(SpringLayout.NORTH, loginButton, 50, SpringLayout.NORTH, passwordLabel);
     }
+
+    public String getUserFieldInput() {
+        return userField.getText();
+    }
+
+    public char[] getPassword(){
+        return passwordField.getPassword();
+    }
+
+    public static void main(String[] args) {
+        new LoginView();
+    }
 }
+
+
