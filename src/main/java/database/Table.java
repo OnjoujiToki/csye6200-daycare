@@ -22,9 +22,7 @@ public class Table extends JTable {
         heading.setFont(new Font(null, Font.ITALIC, 16));
         heading.setForeground(Color.RED);
     }
-    public void setTableModel(TableModel model) {
-        this.setModel(model);
-    }
+
 
     public void render() {
         Vector<String> columnName = TableModel.getColumns();
@@ -33,6 +31,7 @@ public class Table extends JTable {
             TableColumn cur = getColumn(columnName.get(i));
             cur.setCellRenderer(property);
             if (i == 0 ) {
+                System.out.println("Has been set");
                 cur.setPreferredWidth(50);
                 cur.setMaxWidth(50);
                 cur.setResizable(false);

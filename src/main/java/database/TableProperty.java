@@ -5,9 +5,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
 public class TableProperty extends DefaultTableCellRenderer {
+
     public TableProperty()
     {
-        super.setOpaque(true);
+        //super.setOpaque(true);
     }
 
     @Override
@@ -25,6 +26,7 @@ public class TableProperty extends DefaultTableCellRenderer {
         else if(grade == Grade.C) {
             super.setBackground(Color.RED);
         }*/
+        // check students here
         if (row % 2 == 0) {
             setBackground(Color.LIGHT_GRAY);
         } else {
@@ -32,6 +34,6 @@ public class TableProperty extends DefaultTableCellRenderer {
         }
         setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
 
-        return this;
+        return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
     }
 }

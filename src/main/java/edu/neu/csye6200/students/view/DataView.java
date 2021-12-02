@@ -16,7 +16,7 @@ import java.util.Vector;
 public class DataView extends JFrame {
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
     JPanel operationPanel = new JPanel();
-    JPanel dataPanel = new JPanel();
+    JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
     Table mainTable =  new Table();
     JButton addButton = new JButton("Add");
     JButton importButton = new JButton("Import");
@@ -96,7 +96,8 @@ public class DataView extends JFrame {
         data.addElement(row1);
         data.addElement(row2);
         TableModel mainTablemodel = TableModel.analyzeData(data);
-        mainTable.setTableModel(mainTablemodel);
+        mainTable.setModel(mainTablemodel);
+        mainTable.render();
         JScrollPane jScrollPane = new JScrollPane(mainTable);
         contentPane.add(jScrollPane, BorderLayout.CENTER);
         contentPane.add(dataPanel, BorderLayout.SOUTH);
