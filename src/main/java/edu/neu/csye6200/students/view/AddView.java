@@ -17,9 +17,19 @@ public class AddView extends JFrame {
     SubmitClick submitEvents;
     SpringLayout springLayout = new SpringLayout();
     JPanel SpringPanel = new JPanel(springLayout);
-    JTextField userField = new JTextField();
-    JLabel passwordLabel = new JLabel("Password:");
-    JLabel userNameLabel = new JLabel("UserName:");
+    JTextField nameField = new JTextField();
+    JLabel idLabel = new JLabel("ID: ");
+    JLabel nameLabel = new JLabel("UserName:");
+    JLabel ageLabel = new JLabel("Age: ");
+    JLabel parentLabel = new JLabel("Parent: ");
+    JLabel addressLabel = new JLabel("Address: ");
+    JLabel hibLabel = new JLabel("Hib: ");
+    JLabel varicellaLabel = new JLabel("Varicella: ");
+    JLabel dtapLabel = new JLabel("DTaP: ");
+    JLabel polioLabel = new JLabel("Polio: ");
+    JLabel mmrLabel = new JLabel("MMR: ");
+    JLabel HepatitisLabel = new JLabel("Hepatitis: ");
+
     JPasswordField passwordField = new JPasswordField();
     JButton addButton = new JButton("add");
     TrayIcon trayIcon;
@@ -58,7 +68,7 @@ public class AddView extends JFrame {
         setLocation((curScreenSize.width - 600) / 2, (curScreenSize.height - 400) / 2);
 
         // System Tray Support for Windows
-        SystemTraySupportWindowsOS(iconImage);
+        // SystemTraySupportWindowsOS(iconImage);
     }
 
     private void contentPaneAdd(Container contentPane) {
@@ -69,9 +79,9 @@ public class AddView extends JFrame {
     private void fontSizeInitialization() {
         // initialization fonts and size;
         titleLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 30));
-        userNameLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 20));
-        passwordLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 20));
-        userField.setPreferredSize(new Dimension(200, 30));
+        nameLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 20));
+        idLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 20));
+        nameField.setPreferredSize(new Dimension(200, 30));
         passwordField.setPreferredSize(new Dimension(200, 30));
         titleLabel.setPreferredSize(new Dimension(0,80));
     }
@@ -111,31 +121,40 @@ public class AddView extends JFrame {
 
     private void SpringLayoutSetup() {
         // Spring Layout
-        SpringPanel.add(userNameLabel);
-        SpringPanel.add(userField);
-        SpringPanel.add(passwordLabel);
+        SpringPanel.add(idLabel);
+        SpringPanel.add(nameLabel);
+        SpringPanel.add(ageLabel);
+        SpringPanel.add(addressLabel);
+        SpringPanel.add(hibLabel);
+        SpringPanel.add(varicellaLabel);
+        SpringPanel.add(dtapLabel);
+        SpringPanel.add(polioLabel);
+        SpringPanel.add(mmrLabel);
+        SpringPanel.add(HepatitisLabel);
+        SpringPanel.add(nameField);
         SpringPanel.add(passwordField);
         SpringPanel.add(addButton);
+        SpringPanel.add(parentLabel);
         addButton.addActionListener(submitEvents);
         //addButton.addKeyListener(addCLickEvents);
         // wait to complete.. key to add
         getRootPane().setDefaultButton(addButton);
-        Spring lineWidth = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userField)), Spring.constant(20));
-        int buttonPos = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userField)), Spring.constant(-140)).getValue()/2;
-        springLayout.putConstraint(SpringLayout.WEST, userNameLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
-        springLayout.putConstraint(SpringLayout.NORTH, userNameLabel, 25, SpringLayout.NORTH, SpringPanel);
-        springLayout.putConstraint(SpringLayout.WEST, passwordLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
-        springLayout.putConstraint(SpringLayout.NORTH, passwordLabel, 100, SpringLayout.NORTH, SpringPanel);
-        springLayout.putConstraint(SpringLayout.WEST, userField, 20, SpringLayout.EAST, userNameLabel);
-        springLayout.putConstraint(SpringLayout.NORTH, userField, 0, SpringLayout.NORTH, userNameLabel);
-        springLayout.putConstraint(SpringLayout.WEST, passwordField, 25, SpringLayout.EAST,passwordLabel);
-        springLayout.putConstraint(SpringLayout.NORTH, passwordField, 0, SpringLayout.NORTH,passwordLabel);
-        springLayout.putConstraint(SpringLayout.WEST, addButton, buttonPos, SpringLayout.HORIZONTAL_CENTER, passwordLabel);
-        springLayout.putConstraint(SpringLayout.NORTH, addButton, 50, SpringLayout.NORTH, passwordLabel);
+        Spring lineWidth = Spring.sum(Spring.sum(Spring.width(nameLabel), Spring.width(nameField)), Spring.constant(20));
+        int buttonPos = Spring.sum(Spring.sum(Spring.width(nameLabel), Spring.width(nameField)), Spring.constant(-140)).getValue()/2;
+        springLayout.putConstraint(SpringLayout.WEST, nameLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, nameLabel, 25, SpringLayout.NORTH, SpringPanel);
+        springLayout.putConstraint(SpringLayout.WEST, idLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, idLabel, 100, SpringLayout.NORTH, SpringPanel);
+        springLayout.putConstraint(SpringLayout.WEST, nameField, 20, SpringLayout.EAST, nameLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, nameField, 0, SpringLayout.NORTH, nameLabel);
+        springLayout.putConstraint(SpringLayout.WEST, passwordField, 25, SpringLayout.EAST,idLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, passwordField, 0, SpringLayout.NORTH,idLabel);
+        springLayout.putConstraint(SpringLayout.WEST, addButton, buttonPos, SpringLayout.HORIZONTAL_CENTER, idLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, addButton, 50, SpringLayout.NORTH, idLabel);
     }
 
-    public String getUserFieldInput() {
-        return userField.getText();
+    public String getnameFieldInput() {
+        return nameField.getText();
     }
 
     public char[] getPassword(){
