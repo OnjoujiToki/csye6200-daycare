@@ -9,18 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URL;
-/*
-// jtextarea
-textArea.setFont(new Font("Monaco", Font.PLAIN, 20));
 
-// jlabel
-label.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
-
-// jlist
-list.setFont(new Font("Helvetica Neue", Font.PLAIN, 12));
- */
 public class LoginView extends JFrame {
-
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
     // borderoutlayout + jpanel
     SpringLayout springLayout = new SpringLayout();
@@ -31,7 +21,6 @@ public class LoginView extends JFrame {
     JPasswordField passwordField = new JPasswordField();
     JButton loginButton = new JButton("Login");
     LoginClick loginCLickEvents = new LoginClick(this);
-
     TrayIcon trayIcon;
     SystemTray systemTray;
     public LoginView() {
@@ -126,6 +115,7 @@ public class LoginView extends JFrame {
         SpringPanel.add(loginButton);
         loginButton.addActionListener(loginCLickEvents);
         //loginButton.addKeyListener(loginCLickEvents);
+        // wait to complete.. key to login
         getRootPane().setDefaultButton(loginButton);
         Spring lineWidth = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userField)), Spring.constant(20));
         int buttonPos = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userField)), Spring.constant(-140)).getValue()/2;

@@ -1,24 +1,22 @@
 package edu.neu.csye6200.students.view;
+import buttonEvents.addButtonClick;
 
-import buttonEvents.LoginClick;
+
 import database.Table;
 import database.TableModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.net.URL;
 import java.util.Vector;
 
 public class DataView extends JFrame {
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
-    JPanel operationPanel = new JPanel();
-    JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
-    Table mainTable =  new Table();
-    JButton addButton = new JButton("Add");
+    public JPanel operationPanel = new JPanel();
+    public JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
+    public Table mainTable =  new Table();
+    public JButton addButton = new JButton("Add");
     JButton importButton = new JButton("Import");
     JButton refreshButton = new JButton("Refresh");
     JButton deleteButton = new JButton("Delete");
@@ -26,8 +24,11 @@ public class DataView extends JFrame {
     JButton searchButton = new JButton("Search");
     JButton nextButton = new JButton("Next");
     JButton preButton = new JButton("Last");
-
+    addButtonClick addButtonClickEvent = new addButtonClick(this);
     TrayIcon trayIcon;
+    public Vector<Vector<Object>> data = new Vector<>();
+    public TableModel mainTablemodel;
+    Vector<Object> row1 = new Vector<>();
     SystemTray systemTray;
     public DataView() {
         super("Day Care Database");
@@ -62,22 +63,11 @@ public class DataView extends JFrame {
         // System Tray Support for Windows
         SystemTraySupportWindowsOS(iconImage);
 
-    }
 
-    private void addAllButtons(Container contentPane) {
-        // update Button
-        operationPanel.add(addButton);
-        operationPanel.add(importButton);
-        operationPanel.add(refreshButton);
-        operationPanel.add(deleteButton);
-        operationPanel.add(searchField);
-        operationPanel.add(searchButton);
-        contentPane.add(nextButton);
-        contentPane.add(preButton);
-        contentPane.add(operationPanel, BorderLayout.NORTH);
+        // Button Events
+        addButton.addActionListener(addButtonClickEvent);
         // Test Data
-        Vector<Vector<Object>> data = new Vector<>();
-        Vector<Object> row1 = new Vector<>();
+
         row1.addElement("1");
         row1.addElement("nm");
         row1.addElement("1sl");
@@ -95,12 +85,25 @@ public class DataView extends JFrame {
         row2.addElement("1");
         data.addElement(row1);
         data.addElement(row2);
-        TableModel mainTablemodel = TableModel.analyzeData(data);
+        mainTablemodel = TableModel.analyzeData(data);
         mainTable.setModel(mainTablemodel);
         mainTable.render();
         JScrollPane jScrollPane = new JScrollPane(mainTable);
         contentPane.add(jScrollPane, BorderLayout.CENTER);
         contentPane.add(dataPanel, BorderLayout.SOUTH);
+    }
+
+    private void addAllButtons(Container contentPane) {
+        // update Button
+        operationPanel.add(addButton);
+        operationPanel.add(importButton);
+        operationPanel.add(refreshButton);
+        operationPanel.add(deleteButton);
+        operationPanel.add(searchField);
+        operationPanel.add(searchButton);
+        contentPane.add(nextButton);
+        contentPane.add(preButton);
+        contentPane.add(operationPanel, BorderLayout.NORTH);
     }
 
 
@@ -136,6 +139,7 @@ public class DataView extends JFrame {
             });
         }
     }
+
 
 
 }
