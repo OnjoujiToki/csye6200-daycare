@@ -3,12 +3,21 @@ package edu.neu.csye6200.students.view;
 import buttonEvents.SubmitClick;
 
 import javax.swing.*;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URL;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.DocumentFilter.FilterBypass;
 
 public class AddView extends JFrame {
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
@@ -18,19 +27,23 @@ public class AddView extends JFrame {
     SpringLayout springLayout = new SpringLayout();
     JPanel SpringPanel = new JPanel(springLayout);
     JTextField nameField = new JTextField();
-    JLabel idLabel = new JLabel("ID: ");
-    JLabel nameLabel = new JLabel("UserName:");
-    JLabel ageLabel = new JLabel("Age: ");
-    JLabel parentLabel = new JLabel("Parent: ");
-    JLabel addressLabel = new JLabel("Address: ");
-    JLabel hibLabel = new JLabel("Hib: ");
-    JLabel varicellaLabel = new JLabel("Varicella: ");
-    JLabel dtapLabel = new JLabel("DTaP: ");
-    JLabel polioLabel = new JLabel("Polio: ");
-    JLabel mmrLabel = new JLabel("MMR: ");
-    JLabel HepatitisLabel = new JLabel("Hepatitis: ");
+    JTextField idField = new JTextField(10); // should be number only
 
-    JPasswordField passwordField = new JPasswordField();
+
+
+    JLabel idLabel = new JLabel("ID:       ");
+    JLabel nameLabel = new JLabel("Name:     ");
+    JLabel ageLabel = new JLabel("Age:      ");
+    JLabel parentLabel = new JLabel("Parent:   ");
+    JLabel addressLabel = new JLabel("Address:  ");
+    JLabel hibLabel = new JLabel("Hib:      ");
+    JLabel varicellaLabel = new JLabel("Varicella:");
+    JLabel dtapLabel = new JLabel("DTaP:     ");
+    JLabel polioLabel = new JLabel("Polio:    ");
+    JLabel mmrLabel = new JLabel("MMR:      ");
+    JLabel HepatitisLabel = new JLabel("Hepatitis:");
+
+
     JButton addButton = new JButton("add");
     TrayIcon trayIcon;
     SystemTray systemTray;
@@ -60,7 +73,7 @@ public class AddView extends JFrame {
         setIconImage(iconImage);
 
         // set window
-        setSize(600, 400); // in px
+        setSize(800, 600); // in px
         setVisible(true);
         setResizable(false); // make it nonchangeable
         setDefaultCloseOperation(EXIT_ON_CLOSE); // exit when closing
@@ -79,10 +92,19 @@ public class AddView extends JFrame {
     private void fontSizeInitialization() {
         // initialization fonts and size;
         titleLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 30));
-        nameLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 20));
-        idLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 20));
-        nameField.setPreferredSize(new Dimension(200, 30));
-        passwordField.setPreferredSize(new Dimension(200, 30));
+        nameLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        idLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        ageLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        parentLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        hibLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        varicellaLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        dtapLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        polioLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        mmrLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        HepatitisLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        addressLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        nameField.setPreferredSize(new Dimension(200, 20));
+        idField.setPreferredSize(new Dimension(200,20));
         titleLabel.setPreferredSize(new Dimension(0,80));
     }
 
@@ -132,36 +154,94 @@ public class AddView extends JFrame {
         SpringPanel.add(mmrLabel);
         SpringPanel.add(HepatitisLabel);
         SpringPanel.add(nameField);
-        SpringPanel.add(passwordField);
+        SpringPanel.add(idField);
         SpringPanel.add(addButton);
         SpringPanel.add(parentLabel);
         addButton.addActionListener(submitEvents);
         //addButton.addKeyListener(addCLickEvents);
-        // wait to complete.. key to add
+        // wait to complete.. key to addx z
         getRootPane().setDefaultButton(addButton);
         Spring lineWidth = Spring.sum(Spring.sum(Spring.width(nameLabel), Spring.width(nameField)), Spring.constant(20));
         int buttonPos = Spring.sum(Spring.sum(Spring.width(nameLabel), Spring.width(nameField)), Spring.constant(-140)).getValue()/2;
         springLayout.putConstraint(SpringLayout.WEST, nameLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
         springLayout.putConstraint(SpringLayout.NORTH, nameLabel, 25, SpringLayout.NORTH, SpringPanel);
         springLayout.putConstraint(SpringLayout.WEST, idLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
-        springLayout.putConstraint(SpringLayout.NORTH, idLabel, 100, SpringLayout.NORTH, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, idLabel, 25, SpringLayout.NORTH, nameLabel);
         springLayout.putConstraint(SpringLayout.WEST, nameField, 20, SpringLayout.EAST, nameLabel);
         springLayout.putConstraint(SpringLayout.NORTH, nameField, 0, SpringLayout.NORTH, nameLabel);
-        springLayout.putConstraint(SpringLayout.WEST, passwordField, 25, SpringLayout.EAST,idLabel);
-        springLayout.putConstraint(SpringLayout.NORTH, passwordField, 0, SpringLayout.NORTH,idLabel);
-        springLayout.putConstraint(SpringLayout.WEST, addButton, buttonPos, SpringLayout.HORIZONTAL_CENTER, idLabel);
-        springLayout.putConstraint(SpringLayout.NORTH, addButton, 50, SpringLayout.NORTH, idLabel);
+        springLayout.putConstraint(SpringLayout.WEST, ageLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, ageLabel, 25, SpringLayout.NORTH, idLabel);
+        springLayout.putConstraint(SpringLayout.WEST, parentLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, parentLabel, 25, SpringLayout.NORTH, ageLabel);
+        springLayout.putConstraint(SpringLayout.WEST, addressLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, addressLabel, 25, SpringLayout.NORTH, parentLabel);
+        springLayout.putConstraint(SpringLayout.WEST, hibLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, hibLabel, 25, SpringLayout.NORTH, addressLabel);
+        springLayout.putConstraint(SpringLayout.WEST, varicellaLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, varicellaLabel, 25, SpringLayout.NORTH, hibLabel);
+        springLayout.putConstraint(SpringLayout.WEST, dtapLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, dtapLabel, 25, SpringLayout.NORTH, varicellaLabel);
+        springLayout.putConstraint(SpringLayout.WEST, polioLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, polioLabel, 25, SpringLayout.NORTH, dtapLabel);
+        springLayout.putConstraint(SpringLayout.WEST, mmrLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, mmrLabel, 25, SpringLayout.NORTH, polioLabel);
+        springLayout.putConstraint(SpringLayout.WEST, HepatitisLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, HepatitisLabel, 25, SpringLayout.NORTH, mmrLabel);
+        springLayout.putConstraint(SpringLayout.WEST, addButton, buttonPos, SpringLayout.HORIZONTAL_CENTER, HepatitisLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, addButton, 50, SpringLayout.NORTH, HepatitisLabel);
     }
 
     public String getnameFieldInput() {
         return nameField.getText();
     }
 
-    public char[] getPassword(){
-        return passwordField.getPassword();
-    }
 
 
 }
 
+class MyDocumentFilter extends DocumentFilter
+{
+    @Override
+    public void insertString(DocumentFilter.FilterBypass fp
+            , int offset, String string, AttributeSet aset)
+            throws BadLocationException
+    {
+        int len = string.length();
+        boolean isValidInteger = true;
 
+        for (int i = 0; i < len; i++)
+        {
+            if (!Character.isDigit(string.charAt(i)))
+            {
+                isValidInteger = false;
+                break;
+            }
+        }
+        if (isValidInteger)
+            super.insertString(fp, offset, string, aset);
+        else
+            Toolkit.getDefaultToolkit().beep();
+    }
+
+    @Override
+    public void replace(DocumentFilter.FilterBypass fp, int offset
+            , int length, String string, AttributeSet aset)
+            throws BadLocationException
+    {
+        int len = string.length();
+        boolean isValidInteger = true;
+
+        for (int i = 0; i < len; i++)
+        {
+            if (!Character.isDigit(string.charAt(i)))
+            {
+                isValidInteger = false;
+                break;
+            }
+        }
+        if (isValidInteger)
+            super.replace(fp, offset, length, string, aset);
+        else
+            Toolkit.getDefaultToolkit().beep();
+    }
+}
