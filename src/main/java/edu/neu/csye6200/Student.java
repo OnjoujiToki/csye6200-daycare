@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Locale;
 
 class VaccineStatus{
-    public List<LocalDate> status;
+    public List<LocalDate> timestamp;
     public int dozeSize;
 }
+
 public class Student {
+
     private int id;
     private int age;
     private int ageMonth;
@@ -34,6 +36,9 @@ public class Student {
 
     public boolean checkPolio() {
         LocalDate today = LocalDate.now();
+        for( singleRule e:VaccineRules.rules) {
+            System.out.println(e.vaccineName);
+        }
         return false;
     }
 

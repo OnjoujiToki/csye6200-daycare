@@ -31,7 +31,6 @@ public class Table extends JTable {
             TableColumn cur = getColumn(columnName.get(i));
             cur.setCellRenderer(property);
             if (i == 0 ) {
-                System.out.println("Has been set");
                 cur.setPreferredWidth(50);
                 cur.setMaxWidth(50);
                 cur.setResizable(false);
