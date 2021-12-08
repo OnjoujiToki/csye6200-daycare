@@ -1,5 +1,5 @@
 package edu.neu.csye6200.students.view;
-import buttonEvents.addButtonClick;
+import buttonEvents.AddButtonClick;
 
 
 import database.Table;
@@ -24,7 +24,7 @@ public class DataView extends JFrame {
     JButton searchButton = new JButton("Search");
     JButton nextButton = new JButton("Next");
     JButton preButton = new JButton("Last");
-    addButtonClick addButtonClickEvent = new addButtonClick(this);
+    AddButtonClick addButtonClickEvent = new AddButtonClick(this);
     TrayIcon trayIcon;
     public Vector<Vector<Object>> data = new Vector<>();
     public TableModel mainTablemodel;

@@ -1,6 +1,6 @@
 package edu.neu.csye6200.students.view;
 
-import buttonEvents.LoginClick;
+import buttonEvents.SubmitClick;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,27 +10,30 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.net.URL;
 
-public class LoginView extends JFrame {
+public class AddView extends JFrame {
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
     // borderoutlayout + jpanel
+    private final DataView dataView;
+    SubmitClick submitEvents;
     SpringLayout springLayout = new SpringLayout();
     JPanel SpringPanel = new JPanel(springLayout);
     JTextField userField = new JTextField();
     JLabel passwordLabel = new JLabel("Password:");
     JLabel userNameLabel = new JLabel("UserName:");
     JPasswordField passwordField = new JPasswordField();
-    JButton loginButton = new JButton("Login");
-    LoginClick loginCLickEvents = new LoginClick(this);
+    JButton addButton = new JButton("add");
     TrayIcon trayIcon;
     SystemTray systemTray;
-    public LoginView() {
+    public AddView(DataView view) {
         super("Day Care System");
+        this.dataView = view;
+        submitEvents = new SubmitClick(this,view);
         Container contentPane = getContentPane();
         fontSizeInitialization();
         SpringLayoutSetup();
         contentPaneAdd(contentPane);
         // icon image path
-        final URL iconPath = LoginView.class.getClassLoader().getResource("icon.png");
+        final URL iconPath = AddView.class.getClassLoader().getResource("icon.png");
         assert iconPath != null;
         final Image iconImage = new ImageIcon(iconPath).getImage();
         // set Dock image for MacOSX
@@ -55,7 +58,7 @@ public class LoginView extends JFrame {
         setLocation((curScreenSize.width - 600) / 2, (curScreenSize.height - 400) / 2);
 
         // System Tray Support for Windows
-        //SystemTraySupportWindowsOS(iconImage);
+        SystemTraySupportWindowsOS(iconImage);
     }
 
     private void contentPaneAdd(Container contentPane) {
@@ -88,7 +91,7 @@ public class LoginView extends JFrame {
                 @Override
                 public void windowIconified(WindowEvent e) {
                     //super.windowIconified(e);
-                    LoginView.this.dispose();
+                    AddView.this.dispose();
                 }
             });
             trayIcon.addMouseListener(new MouseAdapter() {
@@ -98,9 +101,9 @@ public class LoginView extends JFrame {
                     // super.mouseClicked(e);
                     int cntClicks = e.getClickCount();
                     if (cntClicks == 1)  {
-                        LoginView.this.setExtendedState(JFrame.NORMAL);
+                        AddView.this.setExtendedState(JFrame.NORMAL);
                     }
-                    LoginView.this.setVisible(true);
+                    AddView.this.setVisible(true);
                 }
             });
         }
@@ -112,11 +115,11 @@ public class LoginView extends JFrame {
         SpringPanel.add(userField);
         SpringPanel.add(passwordLabel);
         SpringPanel.add(passwordField);
-        SpringPanel.add(loginButton);
-        loginButton.addActionListener(loginCLickEvents);
-        //loginButton.addKeyListener(loginCLickEvents);
-        // wait to complete.. key to login
-        getRootPane().setDefaultButton(loginButton);
+        SpringPanel.add(addButton);
+        addButton.addActionListener(submitEvents);
+        //addButton.addKeyListener(addCLickEvents);
+        // wait to complete.. key to add
+        getRootPane().setDefaultButton(addButton);
         Spring lineWidth = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userField)), Spring.constant(20));
         int buttonPos = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userField)), Spring.constant(-140)).getValue()/2;
         springLayout.putConstraint(SpringLayout.WEST, userNameLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
@@ -127,8 +130,8 @@ public class LoginView extends JFrame {
         springLayout.putConstraint(SpringLayout.NORTH, userField, 0, SpringLayout.NORTH, userNameLabel);
         springLayout.putConstraint(SpringLayout.WEST, passwordField, 25, SpringLayout.EAST,passwordLabel);
         springLayout.putConstraint(SpringLayout.NORTH, passwordField, 0, SpringLayout.NORTH,passwordLabel);
-        springLayout.putConstraint(SpringLayout.WEST, loginButton, buttonPos, SpringLayout.HORIZONTAL_CENTER, passwordLabel);
-        springLayout.putConstraint(SpringLayout.NORTH, loginButton, 50, SpringLayout.NORTH, passwordLabel);
+        springLayout.putConstraint(SpringLayout.WEST, addButton, buttonPos, SpringLayout.HORIZONTAL_CENTER, passwordLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, addButton, 50, SpringLayout.NORTH, passwordLabel);
     }
 
     public String getUserFieldInput() {
@@ -139,9 +142,7 @@ public class LoginView extends JFrame {
         return passwordField.getPassword();
     }
 
-    public static void main(String[] args) {
-        new LoginView();
-    }
+
 }
 
 
