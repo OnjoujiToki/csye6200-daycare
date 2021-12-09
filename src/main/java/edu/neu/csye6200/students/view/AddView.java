@@ -49,7 +49,7 @@ public class AddView extends JFrame {
     SystemTray systemTray;
     public AddView(DataView view) {
         super("Day Care System");
-        this.dataView = view;
+        this.dataView = view; // update
         submitEvents = new SubmitClick(this,view);
         Container contentPane = getContentPane();
         fontSizeInitialization();
