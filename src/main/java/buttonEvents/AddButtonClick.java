@@ -5,6 +5,8 @@ import edu.neu.csye6200.students.view.AddView;
 import edu.neu.csye6200.students.view.DataView;
 import edu.neu.csye6200.students.view.LoginView;
 import buttonEvents.*;
+import edu.neu.csye6200.students.view.SubmitView;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
@@ -24,9 +26,13 @@ public class AddButtonClick implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Login Clicked");
-        new AddView(instance);
-
+        System.out.println("submit Clicked");
+       //new AddView(instance);
+        JFrame jFrame = new JFrame("add");
+        jFrame.setContentPane(new SubmitView(instance).$$$getRootComponent$$$());
+        jFrame.pack();
+        jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        jFrame.setVisible(true);
         /*
         Vector<Object> row3 = new Vector<>();
         row3.addElement("1");

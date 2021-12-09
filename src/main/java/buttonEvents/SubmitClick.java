@@ -36,6 +36,8 @@ public class SubmitClick implements ActionListener {
         row3.addElement("1");
         row3.addElement("1");
         row3.addElement("1");
+        //Add student to the vector
+        //
         dataInstance.data.addElement(row3);
         // instance.mainTablemodel.fireTableDataChanged();
         dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data);

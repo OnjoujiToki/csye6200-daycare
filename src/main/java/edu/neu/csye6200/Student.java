@@ -1,28 +1,22 @@
 package edu.neu.csye6200;
 import java.time.*;
 import java.util.List;
-import java.util.Locale;
 
-class VaccineStatus{
-    public List<LocalDate> timestamp;
-    public int dozeSize;
-}
 
 public class Student {
-
     private int id;
     private int age;
-    private int ageMonth;
     private String name;
     private String parent;
     private String address;
-    private LocalDate birthday;
-    private VaccineStatus hib;
-    private VaccineStatus datp;
-    private VaccineStatus polio;
-    private VaccineStatus hepatitis;
-    private VaccineStatus mmr;
-    private VaccineStatus varicella;
+    private String Email;
+    private int math;
+    private int english;
+    private int chemistry;
+    private int physics;
+    private int java;
+    private int music;
+
 
     public boolean checkHib() {
         LocalDate today = LocalDate.now();
@@ -36,9 +30,7 @@ public class Student {
 
     public boolean checkPolio() {
         LocalDate today = LocalDate.now();
-        for( singleRule e:VaccineRules.rules) {
-            System.out.println(e.vaccineName);
-        }
+
         return false;
     }
 
@@ -62,5 +54,10 @@ public class Student {
     public int getAge() {return this.age;}
     public String getParent() {return this.parent;}
     public String getAddress() {return this.address;}
+    public int getMath() {return this.math;}
+    public int getEnglish() {return this.english;}
+    public int getPhysics() {return this.physics;}
+    public int getJava() {return this.java;}
+    public int getChemistry() {return this.chemistry;}
 
 }

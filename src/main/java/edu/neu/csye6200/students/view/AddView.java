@@ -27,10 +27,10 @@ public class AddView extends JFrame {
     SpringLayout springLayout = new SpringLayout();
     JPanel SpringPanel = new JPanel(springLayout);
     JTextField nameField = new JTextField();
-    JTextField idField = new JTextField(10); // should be number only
-
-
-
+    JTextField idField = new JTextField(); // should be number only
+    JTextField parentField = new JTextField(); // should be number only
+    JTextField addressField = new JTextField(); // should be number only
+    JTextField ageField = new JTextField(); // should be number only
     JLabel idLabel = new JLabel("ID:       ");
     JLabel nameLabel = new JLabel("Name:     ");
     JLabel ageLabel = new JLabel("Age:      ");
@@ -49,7 +49,7 @@ public class AddView extends JFrame {
     SystemTray systemTray;
     public AddView(DataView view) {
         super("Day Care System");
-        this.dataView = view; // update
+        this.dataView = view;
         submitEvents = new SubmitClick(this,view);
         Container contentPane = getContentPane();
         fontSizeInitialization();
@@ -96,6 +96,7 @@ public class AddView extends JFrame {
         idLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
         ageLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
         parentLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        /*
         hibLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
         varicellaLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
         dtapLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
@@ -105,7 +106,10 @@ public class AddView extends JFrame {
         addressLabel.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
         nameField.setPreferredSize(new Dimension(200, 20));
         idField.setPreferredSize(new Dimension(200,20));
-        titleLabel.setPreferredSize(new Dimension(0,80));
+        addressField.setPreferredSize(new Dimension(200,20));
+        ageField.setPreferredSize(new Dimension(200,20));
+        parentField.setPreferredSize(new Dimension(200,20));*/
+
     }
 
     private void SystemTraySupportWindowsOS(Image iconImage) {
@@ -157,6 +161,10 @@ public class AddView extends JFrame {
         SpringPanel.add(idField);
         SpringPanel.add(addButton);
         SpringPanel.add(parentLabel);
+        SpringPanel.add(parentField);
+        SpringPanel.add(ageField);
+        SpringPanel.add(addressField);
+
         addButton.addActionListener(submitEvents);
         //addButton.addKeyListener(addCLickEvents);
         // wait to complete.. key to addx z
@@ -171,10 +179,18 @@ public class AddView extends JFrame {
         springLayout.putConstraint(SpringLayout.NORTH, nameField, 0, SpringLayout.NORTH, nameLabel);
         springLayout.putConstraint(SpringLayout.WEST, ageLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
         springLayout.putConstraint(SpringLayout.NORTH, ageLabel, 25, SpringLayout.NORTH, idLabel);
+        springLayout.putConstraint(SpringLayout.WEST, ageField, 32, SpringLayout.EAST, ageLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, ageField, 25, SpringLayout.NORTH, idField);
         springLayout.putConstraint(SpringLayout.WEST, parentLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
         springLayout.putConstraint(SpringLayout.NORTH, parentLabel, 25, SpringLayout.NORTH, ageLabel);
+        springLayout.putConstraint(SpringLayout.WEST, parentField, 25, SpringLayout.EAST, parentLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, parentField, 25, SpringLayout.NORTH, ageField);
         springLayout.putConstraint(SpringLayout.WEST, addressLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
         springLayout.putConstraint(SpringLayout.NORTH, addressLabel, 25, SpringLayout.NORTH, parentLabel);
+        springLayout.putConstraint(SpringLayout.WEST, addressField, 20, SpringLayout.EAST, addressLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, addressField, 25, SpringLayout.NORTH, parentField);
+        springLayout.putConstraint(SpringLayout.WEST, idField, 40, SpringLayout.EAST, idLabel);
+        springLayout.putConstraint(SpringLayout.NORTH, idField, 25, SpringLayout.NORTH, nameField);
         springLayout.putConstraint(SpringLayout.WEST, hibLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);
         springLayout.putConstraint(SpringLayout.NORTH, hibLabel, 25, SpringLayout.NORTH, addressLabel);
         springLayout.putConstraint(SpringLayout.WEST, varicellaLabel, -lineWidth.getValue()/2, SpringLayout.HORIZONTAL_CENTER, SpringPanel);

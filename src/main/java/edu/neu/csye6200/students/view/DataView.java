@@ -2,6 +2,7 @@ package edu.neu.csye6200.students.view;
 import buttonEvents.AddButtonClick;
 
 
+import buttonEvents.DeleteClick;
 import database.Table;
 import database.TableModel;
 
@@ -25,8 +26,9 @@ public class DataView extends JFrame {
     JButton nextButton = new JButton("Next");
     JButton preButton = new JButton("Last");
     AddButtonClick addButtonClickEvent = new AddButtonClick(this);
+    DeleteClick deleteButtonClickEvent = new DeleteClick(this);
     TrayIcon trayIcon;
-    public Vector<Vector<Object>> data = new Vector<>();
+    public static Vector<Vector<Object>> data = new Vector<>();
     public TableModel mainTablemodel;
     Vector<Object> row1 = new Vector<>();
     SystemTray systemTray;
@@ -66,23 +68,29 @@ public class DataView extends JFrame {
 
         // Button Events
         addButton.addActionListener(addButtonClickEvent);
+        deleteButton.addActionListener(deleteButtonClickEvent);
         // Test Data
-
-        row1.addElement("1");
-        row1.addElement("nm");
-        row1.addElement("1sl");
-        row1.addElement("1");
-        row1.addElement("1");
-        row1.addElement("1");
-        row1.addElement("1");
+        row1.addElement(1);
+        row1.addElement("Zhihao Zhang");
+        row1.addElement("Renai Li");
+        row1.addElement("z@moon.moe");
+        row1.addElement(99);
+        row1.addElement(70);
+        row1.addElement(75);
+        row1.addElement(100);
+        row1.addElement(40);
+        row1.addElement(100);
         Vector<Object> row2 = new Vector<>();
-        row2.addElement("1");
-        row2.addElement("nm");
-        row2.addElement("1sl");
-        row2.addElement("1");
-        row2.addElement("1");
-        row2.addElement("1");
-        row2.addElement("1");
+        row2.addElement(1);
+        row2.addElement("Mark");
+        row2.addElement("Jason");
+        row2.addElement("shimizu@gmail.com");
+        row2.addElement(89);
+        row2.addElement(72);
+        row2.addElement(71);
+        row2.addElement(89);
+        row2.addElement(10);
+        row2.addElement(90);
         data.addElement(row1);
         data.addElement(row2);
         mainTablemodel = TableModel.analyzeData(data);
@@ -139,7 +147,5 @@ public class DataView extends JFrame {
             });
         }
     }
-
-
 
 }
