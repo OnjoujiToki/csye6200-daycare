@@ -35,5 +35,5 @@ public class Student extends Person{
     public int getPhysics() {return this.physics;}
     public int getJava() {return this.java;}
     public int getChemistry() {return this.chemistry;}
-
+    public int getMusic() {return this.music;}
 }

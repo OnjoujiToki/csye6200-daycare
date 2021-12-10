@@ -23,7 +23,7 @@ public class DataView extends JFrame {
     public Table mainTable =  new Table();
     JButton addClassButton = new JButton("New Class");
     public JButton addButton = new JButton("Add");
-    JComboBox classroomCombox = new JComboBox();
+    public JComboBox classroomCombox = new JComboBox();
 
     JButton importButton = new JButton("Import");
     JButton exportButton = new JButton("Export");
@@ -39,6 +39,8 @@ public class DataView extends JFrame {
     DeleteClick deleteButtonClickEvent = new DeleteClick(this);
     ImportClick importButtonClickEvent = new ImportClick(this);
     ExportClick exportButtonClickEvent = new ExportClick(this);
+    SwitchClick switchButtonClickEvent = new SwitchClick(this);
+
     TrayIcon trayIcon;
     public static Vector<Vector<Object>> data = new Vector<>();
     public TableModel mainTablemodel;
@@ -88,6 +90,7 @@ public class DataView extends JFrame {
         deleteButton.addActionListener(deleteButtonClickEvent);
         importButton.addActionListener(importButtonClickEvent);
         exportButton.addActionListener(exportButtonClickEvent);
+        switchButton.addActionListener(switchButtonClickEvent);
         School neu = School.getInstance();
         School.classrooms.add(new Classroom(new Teacher(0, "First Teacher", "firstteacher@email", 20000, 0)));
         neu.printClassroominformation();
