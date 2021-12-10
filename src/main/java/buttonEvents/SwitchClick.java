@@ -31,6 +31,8 @@ public class SwitchClick implements ActionListener {
         int curIdx = -1;
         if (curClassroom != " ") {
             curIdx = mapStringNumber.convertStringtoNumber(curClassroom);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please at least select one classroom");
         }
 
         System.out.println(curIdx);
@@ -55,28 +57,6 @@ public class SwitchClick implements ActionListener {
         instance.mainTable.setModel(instance.mainTablemodel);
         System.out.println(DataView.data.size());
         instance.mainTable.render();
-
-        /*
-        EmailValidator emailValidator = new EmailValidator();
-
-        if (!emailValidator.validate(emailField.getText().trim())) {
-            System.out.print("Invalid Email ID");
-            JOptionPane.showMessageDialog(dataview, "your Email seems weird...");
-
-        } else {
-            String curClass = (String) dataview.classroomCombox.getSelectedItem();
-            assert curClass != null;
-            int curClassIdx = mapStringNumber.convertStringtoNumber(curClass);
-            System.out.println(curClassIdx);
-            School.classrooms.get(curClassIdx).studentList.add(new Student(id, name, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
-            DataView.data.addElement(row3);
-            instance.mainTablemodel = TableModel.analyzeData(DataView.data);
-            instance.mainTable.setModel(instance.mainTablemodel);
-            System.out.println(DataView.data.size());
-            instance.mainTable.render();
-        }
-        */
-
 
     }
 }

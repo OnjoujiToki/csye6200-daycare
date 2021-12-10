@@ -24,14 +24,14 @@ public class DataView extends JFrame {
     JButton addClassButton = new JButton("New Class");
     public JButton addButton = new JButton("Add");
     public JComboBox classroomCombox = new JComboBox();
+    public JComboBox passvalueCombox = new JComboBox();
 
     JButton importButton = new JButton("Import");
     JButton exportButton = new JButton("Export");
     JButton deleteButton = new JButton("Delete");
     JButton switchButton = new JButton("Switch");
 
-    JTextField searchField = new JTextField(20);
-    JButton searchButton = new JButton("Search");
+    JButton searchButton = new JButton("Set this Score As Pass");
     JButton nextButton = new JButton("Next");
     JButton preButton = new JButton("Last");
     AddClassClick addClassButtonClickEvent = new AddClassClick(this);
@@ -40,7 +40,7 @@ public class DataView extends JFrame {
     ImportClick importButtonClickEvent = new ImportClick(this);
     ExportClick exportButtonClickEvent = new ExportClick(this);
     SwitchClick switchButtonClickEvent = new SwitchClick(this);
-
+    SearchClick searchButtonClickEvent = new SearchClick(this);
     TrayIcon trayIcon;
     public static Vector<Vector<Object>> data = new Vector<>();
     public TableModel mainTablemodel;
@@ -52,6 +52,11 @@ public class DataView extends JFrame {
         DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
         defaultComboBoxModel1.addElement("Classroom A");
         classroomCombox.setModel(defaultComboBoxModel1);
+        DefaultComboBoxModel defaultComboBoxModel2 = new DefaultComboBoxModel();
+        defaultComboBoxModel2.addElement("30");
+        defaultComboBoxModel2.addElement("40");
+        defaultComboBoxModel2.addElement("50");
+        passvalueCombox.setModel(defaultComboBoxModel2);
         addAllButtons(contentPane);
         // icon image path
         final URL iconPath = DataView.class.getClassLoader().getResource("icon.png");
@@ -91,6 +96,7 @@ public class DataView extends JFrame {
         importButton.addActionListener(importButtonClickEvent);
         exportButton.addActionListener(exportButtonClickEvent);
         switchButton.addActionListener(switchButtonClickEvent);
+        searchButton.addActionListener(searchButtonClickEvent);
         School neu = School.getInstance();
         School.classrooms.add(new Classroom(new Teacher(0, "First Teacher", "firstteacher@email", 20000, 0)));
         neu.printClassroominformation();
@@ -109,7 +115,7 @@ public class DataView extends JFrame {
         operationPanel.add(importButton);
         operationPanel.add(exportButton);
         operationPanel.add(deleteButton);
-        operationPanel.add(searchField);
+        operationPanel.add(passvalueCombox);
         operationPanel.add(searchButton);
         operationPanel.add(classroomCombox);
         operationPanel.add(switchButton);

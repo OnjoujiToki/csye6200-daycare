@@ -14,11 +14,9 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Vector;
 
-public class SubmitClick implements ActionListener {
-    private final AddView instance;
+public class SearchClick implements ActionListener {
     private final DataView dataInstance;
-    public SubmitClick(AddView view, DataView dataView) {
-        this.instance = view;
+    public SearchClick(DataView dataView) {
         this.dataInstance = dataView;
     }
 
@@ -27,16 +25,12 @@ public class SubmitClick implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Submit Clicked");
-        instance.dispose();
-        Vector<Object> row3 = new Vector<>();
+        System.out.println("Search Clicked");
 
-
-        // instance.mainTablemodel.fireTableDataChanged();
         dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data);
         dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
         System.out.println(dataInstance.data.size());
-        dataInstance.mainTable.render();
+        dataInstance.mainTable.render2();
     }
 
 }

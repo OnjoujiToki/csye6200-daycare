@@ -28,7 +28,6 @@ public class ImportClick implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("import Clicked");
-        //new AddView(instance);
         JFileChooser chooser = new JFileChooser();
         // optionally set chooser options ...
         if (chooser.showOpenDialog(instance) == JFileChooser.APPROVE_OPTION) {

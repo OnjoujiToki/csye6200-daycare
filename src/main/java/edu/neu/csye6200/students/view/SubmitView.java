@@ -84,8 +84,8 @@ public class SubmitView {
                     dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
                     System.out.println(DataView.data.size());
                     dataInstance.mainTable.render();
-                }
 
+                }
 
             }
         });

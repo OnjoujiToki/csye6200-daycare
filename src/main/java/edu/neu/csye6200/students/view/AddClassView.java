@@ -5,6 +5,7 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import edu.neu.csye6200.classes.Classroom;
 import edu.neu.csye6200.classes.School;
 import edu.neu.csye6200.classes.Teacher;
+import utility.EmailValidator;
 import utility.mapStringNumber;
 
 import javax.swing.*;
@@ -32,17 +33,28 @@ public class AddClassView {
                 int salary = Integer.parseInt(salaryField.getText());
                 String email = emailField.getText();
                 int id = Integer.parseInt(idField.getText());
-                Classroom newClassroom = new Classroom(new Teacher(id, name, email, salary, 0));
-                School.classrooms.add(newClassroom);
-                String comboSequence = mapStringNumber.generateNextPermutation(School.classrooms.size());
 
-                // There must be a better solution
-                DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
-                comboBoxModel.addElement(" ");
-                for (int i = 1; i <= School.classrooms.size(); i++) {
-                    comboBoxModel.addElement("CLassroom " + mapStringNumber.generateNextPermutation(i));
+
+                EmailValidator emailValidator = new EmailValidator();
+
+                if (!emailValidator.validate(emailField.getText().trim())) {
+                    System.out.print("Invalid Email ID");
+                    JOptionPane.showMessageDialog(null, "your Email seems weird...");
+                } else {
+                    // There must be a better solution
+                    Classroom newClassroom = new Classroom(new Teacher(id, name, email, salary, 0));
+                    School.classrooms.add(newClassroom);
+                    String comboSequence = mapStringNumber.generateNextPermutation(School.classrooms.size());
+                    DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+                    comboBoxModel.addElement(" ");
+                    for (int i = 1; i <= School.classrooms.size(); i++) {
+                        comboBoxModel.addElement("CLassroom " + mapStringNumber.generateNextPermutation(i));
+                    }
+                    view.classroomCombox.setModel(comboBoxModel);
                 }
-                view.classroomCombox.setModel(comboBoxModel);
+
+
+
             }
         });
     }

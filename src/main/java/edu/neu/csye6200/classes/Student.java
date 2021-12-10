@@ -2,18 +2,18 @@ package edu.neu.csye6200.classes;
 import java.time.*;
 import java.util.List;
 
-
 public class Student extends Person{
-    private int id;
-    private String name;
-    private String parent;
-    private String Email;
-    private int math;
-    private int english;
-    private int chemistry;
-    private int physics;
-    private int java;
-    private int music;
+    private final int id;
+    private final String name;
+    private final String parent;
+    private final String Email;
+    private final int math;
+    private final int english;
+    private final int chemistry;
+    private final int physics;
+    private final int java;
+    private final int music;
+
     public Student(int id, String name, String parent, String email, int math, int english, int chemistry, int physics, int java, int music) {
         this.id = id;
         this.name = name;

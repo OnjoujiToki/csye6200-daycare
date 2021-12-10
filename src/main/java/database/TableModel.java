@@ -6,18 +6,6 @@ import java.util.Vector;
 public class TableModel extends DefaultTableModel {
     static Vector<String> columnsNames = new Vector<>();
     static {
-        /*
-        columnsNames.addElement("ID");
-        columnsNames.addElement("Name");
-        columnsNames.addElement("Age");
-        columnsNames.addElement("Parent");
-        columnsNames.addElement("Address");
-        columnsNames.addElement("Hib Status");
-        columnsNames.addElement("DTaP Status");
-        columnsNames.addElement("Polio Status");
-        columnsNames.addElement("Hepatitis B Status");
-        columnsNames.addElement("MMR Status");
-        columnsNames.addElement("Varicella Status");*/
         columnsNames.addElement("ID");
         columnsNames.addElement("Name");
         columnsNames.addElement("Parent");

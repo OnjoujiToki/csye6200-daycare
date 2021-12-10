@@ -1,5 +1,7 @@
 package database;
 
+import edu.neu.csye6200.students.view.DataView;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
@@ -35,6 +37,22 @@ public class Table extends JTable {
                 cur.setMaxWidth(50);
                 cur.setResizable(false);
             }
+        }
+    }
+
+    public void render2() {
+        Vector<String> columnName = TableModel.getColumns();
+        TableProperty property = new TableProperty();
+        System.out.println("Entered Render2");
+        for (int i = 0; i < columnName.size(); i++) {
+            TableColumn cur = getColumn(columnName.get(i));
+            cur.setCellRenderer(property);
+            for (int j = 0; j < 10; j++) {}
+
+                // cur.setPreferredWidth(50);
+                // cur.setMaxWidth(50);
+                // cur.setResizable(false);
+
         }
     }
 }

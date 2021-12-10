@@ -8,7 +8,7 @@ public class TableProperty extends DefaultTableCellRenderer {
 
     public TableProperty()
     {
-        //super.setOpaque(true);
+        super.setOpaque(true);
     }
 
     @Override
