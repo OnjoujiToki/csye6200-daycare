@@ -35,6 +35,7 @@ public class DeleteClick implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(null, "Unable To Delete");
         }
+        System.out.println(DataView.data.size());
     }
 
 }

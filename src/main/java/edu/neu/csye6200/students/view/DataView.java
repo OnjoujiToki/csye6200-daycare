@@ -3,8 +3,11 @@ import buttonEvents.AddButtonClick;
 
 
 import buttonEvents.DeleteClick;
+import buttonEvents.ExportClick;
+import buttonEvents.ImportClick;
 import database.Table;
 import database.TableModel;
+import edu.neu.csye6200.Classroom;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +22,7 @@ public class DataView extends JFrame {
     public Table mainTable =  new Table();
     public JButton addButton = new JButton("Add");
     JButton importButton = new JButton("Import");
-    JButton refreshButton = new JButton("Refresh");
+    JButton exportButton = new JButton("Export");
     JButton deleteButton = new JButton("Delete");
     JTextField searchField = new JTextField(20);
     JButton searchButton = new JButton("Search");
@@ -27,6 +30,8 @@ public class DataView extends JFrame {
     JButton preButton = new JButton("Last");
     AddButtonClick addButtonClickEvent = new AddButtonClick(this);
     DeleteClick deleteButtonClickEvent = new DeleteClick(this);
+    ImportClick importButtonClickEvent = new ImportClick(this);
+    ExportClick exportButtonClickEvent = new ExportClick(this);
     TrayIcon trayIcon;
     public static Vector<Vector<Object>> data = new Vector<>();
     public TableModel mainTablemodel;
@@ -67,8 +72,12 @@ public class DataView extends JFrame {
 
 
         // Button Events
+        Classroom csye6200 = Classroom.getInstance();
+        csye6200.printStudentsInformation();
         addButton.addActionListener(addButtonClickEvent);
         deleteButton.addActionListener(deleteButtonClickEvent);
+        importButton.addActionListener(importButtonClickEvent);
+        exportButton.addActionListener(exportButtonClickEvent);
         // Test Data
         row1.addElement(1);
         row1.addElement("Zhihao Zhang");
@@ -105,7 +114,7 @@ public class DataView extends JFrame {
         // update Button
         operationPanel.add(addButton);
         operationPanel.add(importButton);
-        operationPanel.add(refreshButton);
+        operationPanel.add(exportButton);
         operationPanel.add(deleteButton);
         operationPanel.add(searchField);
         operationPanel.add(searchButton);

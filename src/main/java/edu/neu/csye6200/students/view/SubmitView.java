@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import edu.neu.csye6200.Classroom;
+import edu.neu.csye6200.Student;
 import utility.EmailValidator;
 
 public class SubmitView {
@@ -47,12 +49,17 @@ public class SubmitView {
                 int physicsGrade = Integer.parseInt((String) physicsBox.getSelectedItem());
                 int javaGrade = Integer.parseInt((String) javaBox.getSelectedItem());
                 int musicGrade = Integer.parseInt((String) musicBox.getSelectedItem());
+                int id = Integer.parseInt((String) idField.getText());
+
+                String parentName = parentField.getText();
+                String email = emailField.getText();
                 String name = idField.getText();
+                Classroom.studentList.add(new Student(id, name, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
                 System.out.println(name);
-                row3.addElement(idField.getText());
-                row3.addElement(nameField.getText());
-                row3.addElement(parentField.getText());
-                row3.addElement(emailField.getText());
+                row3.addElement(id);
+                row3.addElement(name);
+                row3.addElement(parentName);
+                row3.addElement(email);
                 row3.addElement(mathGrade);
                 row3.addElement(englishGrade);
                 row3.addElement(chemistryGrade);
@@ -60,6 +67,7 @@ public class SubmitView {
                 row3.addElement(javaGrade);
                 row3.addElement(musicGrade);
                 EmailValidator emailValidator = new EmailValidator();
+
                 if (!emailValidator.validate(emailField.getText().trim())) {
                     System.out.print("Invalid Email ID");
                     JOptionPane.showMessageDialog(dataview, "your Email seems weird...");

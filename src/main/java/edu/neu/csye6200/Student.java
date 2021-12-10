@@ -8,7 +8,6 @@ public class Student {
     private int age;
     private String name;
     private String parent;
-    private String address;
     private String Email;
     private int math;
     private int english;
@@ -16,44 +15,23 @@ public class Student {
     private int physics;
     private int java;
     private int music;
-
-
-    public boolean checkHib() {
-        LocalDate today = LocalDate.now();
-        return false;
+    public Student(int id, String name, String parent, String email, int math, int english, int chemistry, int physics, int java, int music) {
+        this.id = id;
+        this.name = name;
+        this.parent = parent;
+        this.Email = email;
+        this.math = math;
+        this.english = english;
+        this.chemistry = chemistry;
+        this.physics = physics;
+        this.java = java;
+        this.music = music;
     }
-
-    public boolean checkDatp() {
-        LocalDate today = LocalDate.now();
-        return false;
-    }
-
-    public boolean checkPolio() {
-        LocalDate today = LocalDate.now();
-
-        return false;
-    }
-
-    public boolean checkHepatitis() {
-        LocalDate today = LocalDate.now();
-        return false;
-    }
-
-    public boolean checkMmr() {
-        LocalDate today = LocalDate.now();
-        return false;
-    }
-
-    public boolean checkVaricella() {
-        LocalDate today = LocalDate.now();
-        return false;
-    }
-
     public String getName() {return this.name;}
     public int getId() {return this.id;}
     public int getAge() {return this.age;}
     public String getParent() {return this.parent;}
-    public String getAddress() {return this.address;}
+
     public int getMath() {return this.math;}
     public int getEnglish() {return this.english;}
     public int getPhysics() {return this.physics;}
