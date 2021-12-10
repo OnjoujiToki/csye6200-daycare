@@ -1,26 +1,24 @@
 package buttonEvents;
 
 import database.TableModel;
-import edu.neu.csye6200.students.view.AddView;
+//import edu.neu.csye6200.students.view.AddView;
 import edu.neu.csye6200.students.view.DataView;
-import edu.neu.csye6200.students.view.LoginView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Vector;
 
 public class SubmitClick implements ActionListener {
-    private final AddView instance;
+//    private final AddView instance;
     private final DataView dataInstance;
-    public SubmitClick(AddView view, DataView dataView) {
-        this.instance = view;
-        this.dataInstance = dataView;
+
+    public SubmitClick(DataView dataInstance) {
+        this.dataInstance = dataInstance;
     }
+//    public SubmitClick(AddView view, DataView dataView) {
+//        this.instance = view;
+//        this.dataInstance = dataView;
+//    }
 
 
 
@@ -28,7 +26,7 @@ public class SubmitClick implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Submit Clicked");
-        instance.dispose();
+//        instance.dispose();
         Vector<Object> row3 = new Vector<>();
 
 

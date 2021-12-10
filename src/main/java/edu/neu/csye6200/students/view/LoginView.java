@@ -139,9 +139,9 @@ public class LoginView extends JFrame {
         return passwordField.getPassword();
     }
 
-    public static void main(String[] args) {
-        new LoginView();
-    }
+//    public static void main(String[] args) {
+//        new LoginView();
+//    }
 }
 
 
