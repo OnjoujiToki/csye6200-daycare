@@ -1,11 +1,10 @@
-package edu.neu.csye6200;
+package edu.neu.csye6200.classes;
 import java.time.*;
 import java.util.List;
 
 
-public class Student {
+public class Student extends Person{
     private int id;
-    private int age;
     private String name;
     private String parent;
     private String Email;
@@ -29,9 +28,8 @@ public class Student {
     }
     public String getName() {return this.name;}
     public int getId() {return this.id;}
-    public int getAge() {return this.age;}
     public String getParent() {return this.parent;}
-
+    public String getEmail() {return this.Email;};
     public int getMath() {return this.math;}
     public int getEnglish() {return this.english;}
     public int getPhysics() {return this.physics;}

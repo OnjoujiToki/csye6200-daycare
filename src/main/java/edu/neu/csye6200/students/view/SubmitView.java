@@ -11,9 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import edu.neu.csye6200.Classroom;
-import edu.neu.csye6200.Student;
+import edu.neu.csye6200.classes.Classroom;
+import edu.neu.csye6200.classes.School;
+import edu.neu.csye6200.classes.Student;
 import utility.EmailValidator;
+import utility.mapStringNumber;
 
 public class SubmitView {
     private JPanel mainPanel;
@@ -54,7 +56,6 @@ public class SubmitView {
                 String parentName = parentField.getText();
                 String email = emailField.getText();
                 String name = idField.getText();
-                Classroom.studentList.add(new Student(id, name, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
                 System.out.println(name);
                 row3.addElement(id);
                 row3.addElement(name);
@@ -73,10 +74,15 @@ public class SubmitView {
                     JOptionPane.showMessageDialog(dataview, "your Email seems weird...");
 
                 } else {
+                    String curClass = (String) dataview.classroomCombox.getSelectedItem();
+                    assert curClass != null;
+                    int curClassIdx = mapStringNumber.convertStringtoNumber(curClass);
+                    System.out.println(curClassIdx);
+                    School.classrooms.get(curClassIdx).studentList.add(new Student(id, name, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
                     DataView.data.addElement(row3);
-                    dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data);
+                    dataInstance.mainTablemodel = TableModel.analyzeData(DataView.data);
                     dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
-                    System.out.println(dataInstance.data.size());
+                    System.out.println(DataView.data.size());
                     dataInstance.mainTable.render();
                 }
 

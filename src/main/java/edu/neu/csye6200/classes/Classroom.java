@@ -1,17 +1,19 @@
-package edu.neu.csye6200;
+package edu.neu.csye6200.classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class Classroom {
-    private static Classroom instance;
-    public static List<Student> studentList;
 
+    public Vector<Student> studentList;
+    public Teacher teacher;
     //Student(int id, int age, String name, String parent, String email, int math, int english, int chemistry, int physics, int java ,int music)
-    private Classroom() {
-        studentList = new ArrayList<Student>();
+    public Classroom(Teacher headTeacher) {
+        studentList = new Vector<Student>();
        // studentList.add(new Student(1, "Zhihao Zhang", "Renai Zhang","z@moon.moe",100,100,100,100,59,100));
-                //
+        this.teacher = headTeacher;
+
     }
     public void printStudentsInformation() {
         if (studentList != null) {
@@ -26,10 +28,5 @@ public class Classroom {
     public void addStudent(Student newStudent) {
         studentList.add(newStudent);
     }
-    public static Classroom getInstance() {
-        if (instance == null) {
-            instance = new Classroom();
-        }
-        return instance;
-    }
+
 }

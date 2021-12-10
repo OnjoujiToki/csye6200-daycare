@@ -40,6 +40,19 @@ public class BorderLayoutTest extends  JFrame {
         window.setLocation((curScreenSize.width - 600) /2, (curScreenSize.height - 400) /2);
     }
     public static void main(String[] args) {
-        new BorderLayoutTest();
+        System.out.println(mapStringNumber.convertStringtoNumber("Classroom Z"));
+        System.out.println(mapStringNumber.generateNextPermutation(26));
+
+    }
+    public class mapStringNumber {
+        public static int convertStringtoNumber (String s){
+            // Classroom A
+            char cur = s.charAt(10);
+            return cur - 'A';
+        }
+
+        public static String generateNextPermutation(int i) {
+            return i > 0 && i < 27 ? String.valueOf((char)(i + 64)) : null;
+        }
     }
 }

@@ -1,4 +1,1 @@
-[1, Zhihao Zhang, Renai Li, z@moon.moe, 99, 70, 75, 100, 40, 100]
-[1, Mark, Jason, shimizu@gmail.com, 89, 72, 71, 89, 10, 90]
-[2, 2, New parent, ewroqw@gmail.com, 0, 57, 95, 93, 89, 95]
-[2, 2, New parent, ewroqw@gmail.com, 0, 57, 95, 93, 89, 95]
+[1, 1, a, awae@gmail.com, 3, 5, 4, 4, 4, 4]

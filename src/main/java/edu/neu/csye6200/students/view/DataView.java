@@ -1,39 +1,27 @@
 package edu.neu.csye6200.students.view;
-import buttonEvents.AddButtonClick;
+import buttonEvents.*;
 
-import com.intellij.uiDesigner.core.GridConstraints;
-import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.intellij.uiDesigner.core.Spacer;
 import database.TableModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import edu.neu.csye6200.Classroom;
-import edu.neu.csye6200.Student;
-import utility.EmailValidator;
+import edu.neu.csye6200.classes.Classroom;
 
-import buttonEvents.DeleteClick;
-import buttonEvents.ExportClick;
-import buttonEvents.ImportClick;
 import database.Table;
-import database.TableModel;
-import edu.neu.csye6200.Classroom;
+import edu.neu.csye6200.classes.School;
+import edu.neu.csye6200.classes.Teacher;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
-import java.util.Vector;
 
 public class DataView extends JFrame {
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
     public JPanel operationPanel = new JPanel();
     public JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
     public Table mainTable =  new Table();
+    JButton addClassButton = new JButton("New Class");
     public JButton addButton = new JButton("Add");
     JComboBox classroomCombox = new JComboBox();
 
@@ -46,6 +34,7 @@ public class DataView extends JFrame {
     JButton searchButton = new JButton("Search");
     JButton nextButton = new JButton("Next");
     JButton preButton = new JButton("Last");
+    AddClassClick addClassButtonClickEvent = new AddClassClick(this);
     AddButtonClick addButtonClickEvent = new AddButtonClick(this);
     DeleteClick deleteButtonClickEvent = new DeleteClick(this);
     ImportClick importButtonClickEvent = new ImportClick(this);
@@ -92,36 +81,16 @@ public class DataView extends JFrame {
 
 
         // Button Events
-        Classroom csye6200 = Classroom.getInstance();
-        csye6200.printStudentsInformation();
+        // Classroom csye6200 = Classroom.getInstance();
+        // csye6200.printStudentsInformation();
         addButton.addActionListener(addButtonClickEvent);
+        addClassButton.addActionListener(addClassButtonClickEvent);
         deleteButton.addActionListener(deleteButtonClickEvent);
         importButton.addActionListener(importButtonClickEvent);
         exportButton.addActionListener(exportButtonClickEvent);
-        // Test Data
-        row1.addElement(1);
-        row1.addElement("Zhihao Zhang");
-        row1.addElement("Renai Li");
-        row1.addElement("z@moon.moe");
-        row1.addElement(99);
-        row1.addElement(70);
-        row1.addElement(75);
-        row1.addElement(100);
-        row1.addElement(40);
-        row1.addElement(100);
-        Vector<Object> row2 = new Vector<>();
-        row2.addElement(1);
-        row2.addElement("Mark");
-        row2.addElement("Jason");
-        row2.addElement("shimizu@gmail.com");
-        row2.addElement(89);
-        row2.addElement(72);
-        row2.addElement(71);
-        row2.addElement(89);
-        row2.addElement(10);
-        row2.addElement(90);
-        data.addElement(row1);
-        data.addElement(row2);
+        School neu = School.getInstance();
+        School.classrooms.add(new Classroom(new Teacher(0, "First Teacher", "firstteacher@email", 20000, 0)));
+        neu.printClassroominformation();
         mainTablemodel = TableModel.analyzeData(data);
         mainTable.setModel(mainTablemodel);
         mainTable.render();
@@ -132,6 +101,7 @@ public class DataView extends JFrame {
 
     private void addAllButtons(Container contentPane) {
         // update Button
+        operationPanel.add(addClassButton);
         operationPanel.add(addButton);
         operationPanel.add(importButton);
         operationPanel.add(exportButton);
