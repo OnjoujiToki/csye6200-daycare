@@ -7,11 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Vector;
 
-import edu.neu.csye6200.classes.Classroom;
+//import edu.neu.csye6200.classes.Classroom;
 
 import database.Table;
-import edu.neu.csye6200.classes.School;
-import edu.neu.csye6200.classes.Teacher;
+//import edu.neu.csye6200.classes.School;
+//import edu.neu.csye6200.classes.Teacher;
 
 import java.awt.event.*;
 import java.net.URL;

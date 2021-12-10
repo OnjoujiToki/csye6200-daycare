@@ -9,7 +9,7 @@
         <module name="csye6200-daycare" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="16">
       <module name="csye6200-daycare" target="16" />
     </bytecodeTargetLevel>
   </component>

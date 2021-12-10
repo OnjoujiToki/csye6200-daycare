@@ -2,15 +2,15 @@ package edu.neu.csye6200.students.view;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import edu.neu.csye6200.classes.Classroom;
-import edu.neu.csye6200.classes.School;
-import edu.neu.csye6200.classes.Teacher;
+import edu.neu.csye6200.*;
 import utility.mapStringNumber;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static utility.mapStringNumber.generateNextPermutation;
 
 public class AddClassView {
     private JPanel mainPanel;
@@ -32,15 +32,16 @@ public class AddClassView {
                 int salary = Integer.parseInt(salaryField.getText());
                 String email = emailField.getText();
                 int id = Integer.parseInt(idField.getText());
-                Classroom newClassroom = new Classroom(new Teacher(id, name, email, salary, 0));
-                School.classrooms.add(newClassroom);
-                String comboSequence = mapStringNumber.generateNextPermutation(School.classrooms.size());
+
+                Classroom newClassroom = new Classroom(teacher);
+                School.addClassroom(newClassroom);
+                String comboSequence = generateNextPermutation(School.classrooms.size());
 
                 // There must be a better solution
                 DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
                 comboBoxModel.addElement(" ");
                 for (int i = 1; i <= School.classrooms.size(); i++) {
-                    comboBoxModel.addElement("CLassroom " + mapStringNumber.generateNextPermutation(i));
+                    comboBoxModel.addElement("CLassroom " + generateNextPermutation(i));
                 }
                 view.classroomCombox.setModel(comboBoxModel);
             }
