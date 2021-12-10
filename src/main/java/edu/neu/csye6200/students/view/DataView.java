@@ -1,6 +1,20 @@
 package edu.neu.csye6200.students.view;
 import buttonEvents.AddButtonClick;
 
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
+import com.intellij.uiDesigner.core.Spacer;
+import database.TableModel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
+
+import edu.neu.csye6200.Classroom;
+import edu.neu.csye6200.Student;
+import utility.EmailValidator;
 
 import buttonEvents.DeleteClick;
 import buttonEvents.ExportClick;
@@ -21,9 +35,13 @@ public class DataView extends JFrame {
     public JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
     public Table mainTable =  new Table();
     public JButton addButton = new JButton("Add");
+    JComboBox classroomCombox = new JComboBox();
+
     JButton importButton = new JButton("Import");
     JButton exportButton = new JButton("Export");
     JButton deleteButton = new JButton("Delete");
+    JButton switchButton = new JButton("Switch");
+
     JTextField searchField = new JTextField(20);
     JButton searchButton = new JButton("Search");
     JButton nextButton = new JButton("Next");
@@ -40,7 +58,9 @@ public class DataView extends JFrame {
     public DataView() {
         super("Day Care Database");
         Container contentPane = getContentPane();
-
+        DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
+        defaultComboBoxModel1.addElement("Classroom A");
+        classroomCombox.setModel(defaultComboBoxModel1);
         addAllButtons(contentPane);
         // icon image path
         final URL iconPath = DataView.class.getClassLoader().getResource("icon.png");
@@ -118,6 +138,8 @@ public class DataView extends JFrame {
         operationPanel.add(deleteButton);
         operationPanel.add(searchField);
         operationPanel.add(searchButton);
+        operationPanel.add(classroomCombox);
+        operationPanel.add(switchButton);
         contentPane.add(nextButton);
         contentPane.add(preButton);
         contentPane.add(operationPanel, BorderLayout.NORTH);

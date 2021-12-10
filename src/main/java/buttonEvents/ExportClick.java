@@ -14,9 +14,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Vector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ExportClick implements ActionListener {
     private final DataView instance;
@@ -29,22 +32,59 @@ public class ExportClick implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("export Clicked");
         //new AddView(instance);
-        Classroom instance = Classroom.getInstance();
-        instance.printStudentsInformation();
-        /*
-        Vector<Object> row3 = new Vector<>();
-        row3.addElement("1");
-        row3.addElement("nm");
-        row3.addElement("1sl");
-        row3.addElement("1");
-        row3.addElement("1");
-        row3.addElement("1");
-        instance.data.addElement(row3);
-        // instance.mainTablemodel.fireTableDataChanged();
-        instance.mainTablemodel = TableModel.analyzeData(instance.data);
-        instance.mainTable.setModel(instance.mainTablemodel);
-        System.out.println(instance.data.size());
-        instance.mainTable.render();*/
-    }
+        //Classroom instance = Classroom.getInstance();
+        //instance.printStudentsInformation();
+
+    /*
+     * Writes data from an input vector to a given file
+     */
+
+        PrintStream out = null;
+
+        try {
+            System.out.println("Start writing to file.");
+            out = new PrintStream(new FileOutputStream("file.txt"));
+
+            for (int i = 0; i < DataView.data.size(); i++)
+                out.println(DataView.data.elementAt(i));
+        } catch (ArrayIndexOutOfBoundsException e3) {
+            System.err.println("ArrayIndexOutOfBoundsException Error:" +
+                    e3.getMessage());
+        } catch (IOException e2) {
+            System.err.println("IOException: " + e2.getMessage());
+        } finally {
+            if (out != null) {
+                System.out.println("PrintStream");
+                out.close();
+            } else {
+                System.out.println("Couldn't open connection");
+            }
+        }
 
 }
+
+    public Vector fileToVector(String fileName) {
+        Vector v = new Vector();
+        String inputLine;
+        try {
+            File inFile = new File(fileName);
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    new FileInputStream(inFile)));
+
+            while ((inputLine = br.readLine()) != null) {
+                v.addElement(inputLine.trim());
+            }
+            br.close();
+        } // Try
+        catch (FileNotFoundException ex) {
+            //
+        } catch (IOException ex) {
+            //
+        }
+        return (v);
+    }
+
+
+}
+
+

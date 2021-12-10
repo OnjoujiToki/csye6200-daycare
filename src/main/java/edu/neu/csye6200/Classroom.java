@@ -6,10 +6,11 @@ import java.util.List;
 public class Classroom {
     private static Classroom instance;
     public static List<Student> studentList;
+
     //Student(int id, int age, String name, String parent, String email, int math, int english, int chemistry, int physics, int java ,int music)
     private Classroom() {
         studentList = new ArrayList<Student>();
-        studentList.add(new Student(1, "Zhihao Zhang", "Renai Zhang","z@moon.moe",100,100,100,100,59,100));
+       // studentList.add(new Student(1, "Zhihao Zhang", "Renai Zhang","z@moon.moe",100,100,100,100,59,100));
                 //
     }
     public void printStudentsInformation() {
