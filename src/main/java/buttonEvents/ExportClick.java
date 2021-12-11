@@ -31,8 +31,8 @@ public class ExportClick implements ActionListener {
             System.out.println("Start writing to file.");
             out = new PrintStream(new FileOutputStream("file.txt"));
 
-            for (int i = 0; i < DataView.data.size(); i++)
-                out.println(DataView.data.elementAt(i));
+            for (int i = 0; i < DataView.data.length; i++)
+                out.println(DataView.data[i]);
         } catch (ArrayIndexOutOfBoundsException e3) {
             System.err.println("ArrayIndexOutOfBoundsException Error:" +
                     e3.getMessage());

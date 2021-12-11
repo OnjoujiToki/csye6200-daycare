@@ -20,12 +20,12 @@ public class Teacher extends Person{
     }
 
     @Override
-    String getName() {
+    public String getName() {
         return this.name;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return this.id;
     }
 

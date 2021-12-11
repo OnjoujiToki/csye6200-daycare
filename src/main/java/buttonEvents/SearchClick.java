@@ -29,7 +29,7 @@ public class SearchClick implements ActionListener {
 
         dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data);
         dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
-        System.out.println(dataInstance.data.size());
+        System.out.println(dataInstance.data.length);
         dataInstance.mainTable.render2();
     }
 

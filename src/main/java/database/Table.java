@@ -1,13 +1,9 @@
 package database;
 
-import edu.neu.csye6200.students.view.DataView;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.util.Vector;
 
 public class Table extends JTable {
     public Table(){
@@ -27,10 +23,10 @@ public class Table extends JTable {
 
 
     public void render() {
-        Vector<String> columnName = TableModel.getColumns();
+        String[] columnName = TableModel.getColumns();
         TableProperty property = new TableProperty();
-        for (int i = 0; i < columnName.size(); i++) {
-            TableColumn cur = getColumn(columnName.get(i));
+        for (int i = 0; i < columnName.length; i++) {
+            TableColumn cur = getColumn(columnName[i]);
             cur.setCellRenderer(property);
             if (i == 0 ) {
                 cur.setPreferredWidth(50);
@@ -41,11 +37,11 @@ public class Table extends JTable {
     }
 
     public void render2() {
-        Vector<String> columnName = TableModel.getColumns();
+        String[] columnName = TableModel.getColumns();
         TableProperty property = new TableProperty();
         System.out.println("Entered Render2");
-        for (int i = 0; i < columnName.size(); i++) {
-            TableColumn cur = getColumn(columnName.get(i));
+        for (int i = 0; i < columnName.length; i++) {
+            TableColumn cur = getColumn(columnName[i]);
             cur.setCellRenderer(property);
             for (int j = 0; j < 10; j++) {}
 

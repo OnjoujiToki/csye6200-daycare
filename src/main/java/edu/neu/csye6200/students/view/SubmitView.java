@@ -11,7 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import edu.neu.csye6200.classes.Classroom;
+//import edu.neu.csye6200.classes.Classroom;
+import edu.neu.csye6200.classes.Demo;
 import edu.neu.csye6200.classes.School;
 import edu.neu.csye6200.classes.Student;
 import utility.EmailValidator;
@@ -56,19 +57,20 @@ public class SubmitView {
                 int age = Integer.parseInt((String) ageField.getText());
                 String parentName = parentField.getText();
                 String email = emailField.getText();
-                String name = idField.getText();
+                String name = nameField.getText();
                 System.out.println(name);
-                row3.addElement(id);
-                row3.addElement(name);
-                row3.addElement(age);
-                row3.addElement(parentName);
-                row3.addElement(email);
-                row3.addElement(mathGrade);
-                row3.addElement(englishGrade);
-                row3.addElement(chemistryGrade);
-                row3.addElement(physicsGrade);
-                row3.addElement(javaGrade);
-                row3.addElement(musicGrade);
+//                row3.addElement(id);
+//                row3.addElement(name);
+//                row3.addElement(age);
+//                row3.addElement(parentName);
+//                row3.addElement(email);
+//                row3.addElement(mathGrade);
+//                row3.addElement(englishGrade);
+//                row3.addElement(chemistryGrade);
+//                row3.addElement(physicsGrade);
+//                row3.addElement(javaGrade);
+//                row3.addElement(musicGrade);
+
                 EmailValidator emailValidator = new EmailValidator();
 
                 if (!emailValidator.validate(emailField.getText().trim())) {
@@ -81,12 +83,14 @@ public class SubmitView {
                     int curClassIdx = mapStringNumber.convertStringtoNumber(curClass);
                     System.out.println(curClassIdx);
                     School.classrooms.get(curClassIdx).studentList.add(new Student(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
-                    DataView.data.addElement(row3);
-                    dataInstance.mainTablemodel = TableModel.analyzeData(DataView.data);
-                    dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
-                    System.out.println(DataView.data.size());
+//                    DataView.data.addElement(row3);
+//                    DataView.data.length ++;
+                    Demo.addStudent(new Student(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
+//                    dataInstance.mainTablemodel = TableModel.analyzeData(DataView.data);
+//                    dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
+                    dataInstance.mainTablemodel.addRow(new Object[]{id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade});
+                    System.out.println(DataView.data.length);
                     dataInstance.mainTable.render();
-
                 }
 
             }

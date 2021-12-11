@@ -10,7 +10,7 @@ import java.util.Vector;
 
 public class SubmitClick implements ActionListener {
 //    private final AddView instance;
-    private final DataView dataInstance;
+    private DataView dataInstance;
 
     public SubmitClick(DataView dataInstance) {
         this.dataInstance = dataInstance;
@@ -33,7 +33,7 @@ public class SubmitClick implements ActionListener {
         // instance.mainTablemodel.fireTableDataChanged();
         dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data);
         dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
-        System.out.println(dataInstance.data.size());
+        System.out.println(dataInstance.data.length);
         dataInstance.mainTable.render();
     }
 

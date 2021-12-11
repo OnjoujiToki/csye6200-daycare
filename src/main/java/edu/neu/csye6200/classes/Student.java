@@ -3,6 +3,7 @@ package edu.neu.csye6200.classes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Student extends Person{
     private int id;
@@ -16,7 +17,7 @@ public class Student extends Person{
     private int physics;
     private int java;
     private int music;
-    List<Person> studentsList = new ArrayList<>();
+    Vector<Person> studentsList = new Vector<>();
     StudentFactory factory = new StudentFactory();
     public Student(int id, String name, int age, String parent, String email, int math, int english, int chemistry, int physics, int java, int music) {
         this.id = id;
@@ -38,8 +39,16 @@ public class Student extends Person{
             input.useDelimiter(",");
             int id = input.nextInt();
             String name = input.next();
-            double price = input.nextDouble();
-            studentsList.add(factory.getObject(id, name, age, parent, email, math, english, chemistry, physics, java, music));
+            int age = input.nextInt();
+            String parent = input.next();
+            String email = input.next();
+            int math = input.nextInt();
+            int english = input.nextInt();
+            int chemistry = input.nextInt();
+            int physics = input.nextInt();
+            int java = input.nextInt();
+            int music = input.nextInt();
+            Demo.studentList.add(factory.getObject(id, name, age, parent, email, math, english, chemistry, physics, java, music));
             input.close();
         }
     }

@@ -1,26 +1,29 @@
 package edu.neu.csye6200.students.view;
 import buttonEvents.*;
-
+import edu.neu.csye6200.classes.Demo;
 import database.TableModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Vector;
-
-import edu.neu.csye6200.classes.Classroom;
+import java.util.List;
+import edu.neu.csye6200.classes.*;
 
 import database.Table;
-import edu.neu.csye6200.classes.School;
-import edu.neu.csye6200.classes.Teacher;
 
 import java.awt.event.*;
 import java.net.URL;
+import java.util.stream.Collectors;
+
+import static edu.neu.csye6200.classes.Demo.studentList;
 
 public class DataView extends JFrame {
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
     public JPanel operationPanel = new JPanel();
     public JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
-    public Table mainTable =  new Table();
+    public static Table mainTable =  new Table();
     JButton addClassButton = new JButton("New Class");
     public JButton addButton = new JButton("Add");
     public JComboBox classroomCombox = new JComboBox();
@@ -42,12 +45,19 @@ public class DataView extends JFrame {
     SwitchClick switchButtonClickEvent = new SwitchClick(this);
     SearchClick searchButtonClickEvent = new SearchClick(this);
     TrayIcon trayIcon;
-    public static Vector<Vector<Object>> data = new Vector<>();
-    public TableModel mainTablemodel;
+
+    public static Vector<Object> data1 = new Vector<>();
+    public static Vector<Vector<Object>> data2 = new Vector<>();
+
+    public static Object[][] data;
+
+//    public Vector
+    public static TableModel mainTablemodel;
     Vector<Object> row1 = new Vector<>();
     SystemTray systemTray;
     public DataView() {
-        super("Day Care Database");
+        data = new Object[studentList.size()][11];
+        System.out.println("---lenght-----" + studentList.size());
         Container contentPane = getContentPane();
         DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
         defaultComboBoxModel1.addElement("Classroom A");
@@ -100,6 +110,23 @@ public class DataView extends JFrame {
         School neu = School.getInstance();
         School.classrooms.add(new Classroom(new Teacher(0, "First Teacher", "firstteacher@email", 20000, 0)));
         neu.printClassroominformation();
+        int i = 0;
+        for(Student student: studentList){
+            data[i][0] = student.getId();
+            data[i][1] = student.getName();
+            data[i][2] = student.getAge();
+            data[i][3] = student.getParent();
+            data[i][4] = student.getEmail();
+            data[i][5] = student.getMath();
+            data[i][6] = student.getEnglish();
+            data[i][7] = student.getChemistry();
+            data[i][8] = student.getPhysics();
+            data[i][9] = student.getJava();
+            data[i][10] = student.getMusic();
+            i++;
+        }
+//        data1.addAll(studentList);
+//        data.stream().map(n -> new Vector<Object>(data1));
         mainTablemodel = TableModel.analyzeData(data);
         mainTable.setModel(mainTablemodel);
         mainTable.render();

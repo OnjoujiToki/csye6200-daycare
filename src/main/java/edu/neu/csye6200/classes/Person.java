@@ -5,8 +5,8 @@ public abstract class Person {
     private String email;
     private String name;
     private int age;
-    abstract String getName();
-    abstract int getId();
+    public abstract String getName();
+    public abstract int getId();
     abstract String getEmail();
     public abstract void setId(int id);
     public abstract void setEmail(String email);

@@ -38,7 +38,7 @@ public class SwitchClick implements ActionListener {
         System.out.println(curIdx);
         Classroom curCr = School.classrooms.get(curIdx);
         // YourType varName = (YourType)comboBox.getSelectedItem();
-        DataView.data.clear();
+//        DataView.data();
         for (Student s:curCr.studentList) {
             Vector<Object> curRow = new Vector<>();
             curRow.addElement(s.getId());
@@ -51,11 +51,11 @@ public class SwitchClick implements ActionListener {
             curRow.addElement(s.getPhysics());
             curRow.addElement(s.getJava());
             curRow.addElement(s.getMusic());
-            DataView.data.addElement(curRow);
+//            DataView.data.addElement(curRow);
         }
         instance.mainTablemodel = TableModel.analyzeData(DataView.data);
         instance.mainTable.setModel(instance.mainTablemodel);
-        System.out.println(DataView.data.size());
+//        System.out.println(DataView.data.size());
         instance.mainTable.render();
 
     }
