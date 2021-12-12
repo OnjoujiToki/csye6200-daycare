@@ -2,6 +2,7 @@ package buttonEvents;
 
 import database.TableModel;
 import edu.neu.csye6200.classes.Classroom;
+import edu.neu.csye6200.classes.Person;
 import edu.neu.csye6200.classes.School;
 import edu.neu.csye6200.classes.Student;
 import edu.neu.csye6200.students.view.DataView;
@@ -39,7 +40,7 @@ public class SwitchClick implements ActionListener {
         Classroom curCr = School.classrooms.get(curIdx);
         // YourType varName = (YourType)comboBox.getSelectedItem();
 //        DataView.data();
-        for (Student s:curCr.studentList) {
+        for (Person s: curCr.getStudentList()) {
             Vector<Object> curRow = new Vector<>();
             curRow.addElement(s.getId());
             curRow.addElement(s.getName());

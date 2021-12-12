@@ -3,7 +3,9 @@ package buttonEvents;
 import database.TableModel;
 //import edu.neu.csye6200.students.view.AddView;
 import edu.neu.csye6200.classes.Demo;
+import edu.neu.csye6200.classes.School;
 import edu.neu.csye6200.classes.Student;
+import edu.neu.csye6200.classes.StudentFactory;
 import edu.neu.csye6200.students.view.DataView;
 import edu.neu.csye6200.students.view.LoginView;
 import buttonEvents.*;
@@ -37,8 +39,8 @@ public class ImportClick implements ActionListener {
             File f = chooser.getSelectedFile();
             String csvFile = fileUtil.readCSVFile(f.getName());
             this.instance.dispose();
-            Demo.studentList.removeAll(Demo.studentList);
-            new Student(csvFile);
+            School.studentlist.removeAll(School.studentlist);
+            StudentFactory.addObject(csvFile);
             new DataView();
             // read  and/or display the file somehow. ....
         } else {

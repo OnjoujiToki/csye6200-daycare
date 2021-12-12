@@ -4,6 +4,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import edu.neu.csye6200.classes.Classroom;
+import edu.neu.csye6200.classes.Person;
 import edu.neu.csye6200.classes.School;
 import edu.neu.csye6200.classes.Teacher;
 
@@ -22,7 +23,7 @@ public class AddClassroom {
     public AddClassroom(DataView dataView) {
         {
             DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
-            for (Teacher t : School.teachers) {
+            for (Person t : School.getTeacherlist()) {
                 comboBoxModel.addElement(t);
             }
             teacherName.setModel(comboBoxModel);

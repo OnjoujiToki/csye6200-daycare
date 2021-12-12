@@ -46,7 +46,7 @@ public class AddTeacherView {
                     // There must be a better solution
 //                    Classroom newClassroom = new Classroom();
 //                    School.classrooms.add(newClassroom);
-                    School.teachers.add(new Teacher(id, name, email, age, salary));
+                    School.addTeacher(new Teacher(id, name, email, age, salary));
                     String comboSequence = mapStringNumber.generateNextPermutation(School.classrooms.size());
                     DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
                     comboBoxModel.addElement(" ");

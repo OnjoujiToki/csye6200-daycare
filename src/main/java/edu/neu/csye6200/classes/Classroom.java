@@ -5,20 +5,23 @@ import java.util.List;
 import java.util.Vector;
 
 public class Classroom {
-    public List<Student> studentList;
-    public String name;
-    public Teacher teacher;
-    //Student(int id, int age, String name, String parent, String email, int math, int english, int chemistry, int physics, int java ,int music)
+    // studentList.add(new Student(1, "Zhihao Zhang", "Renai Zhang","z@moon.moe",100,100,100,100,59,100));
+
+    private String name;
+    private Teacher teacher;
+    private List<Person> studentList = new ArrayList<>();
+
     public Classroom(String name, Teacher headTeacher) {
         this.name = name;
         studentList = new ArrayList<>();
-       // studentList.add(new Student(1, "Zhihao Zhang", "Renai Zhang","z@moon.moe",100,100,100,100,59,100));
         this.teacher = headTeacher;
-
+    }
+    public Classroom(Teacher headTeacher) {
+        this.teacher = headTeacher;
     }
     public void printStudentsInformation() {
         if (studentList != null) {
-            for (Student s:studentList) {
+            for (Person s:studentList) {
                 System.out.println(s.getName());
             }
         }
@@ -26,24 +29,18 @@ public class Classroom {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public void addStudent(Student newStudent) {
+   public void addStudent(Person newStudent) {
         studentList.add(newStudent);
     }
+    public void setTeacher(Teacher newTeacher) {
+        this.teacher=newTeacher;
+    }
+
+    public String getName(){return this.name;}
+    public Teacher getTeacher(){return this.teacher;}
+    public List<Person> getStudentList(){return this.studentList;}
 
 }

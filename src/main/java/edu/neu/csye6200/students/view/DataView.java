@@ -17,7 +17,7 @@ import java.awt.event.*;
 import java.net.URL;
 import java.util.stream.Collectors;
 
-import static edu.neu.csye6200.classes.Demo.studentList;
+import static edu.neu.csye6200.classes.School.studentlist;
 
 public class DataView extends JFrame {
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
@@ -58,8 +58,8 @@ public class DataView extends JFrame {
     Vector<Object> row1 = new Vector<>();
     SystemTray systemTray;
     public DataView() {
-        data = new Object[studentList.size()][11];
-        System.out.println("---lenght-----" + studentList.size());
+        data = new Object[studentlist.size()][11];
+        System.out.println("---lenght-----" + studentlist.size());
         Container contentPane = getContentPane();
         DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
         defaultComboBoxModel1.addElement("Classroom A");
@@ -114,7 +114,7 @@ public class DataView extends JFrame {
         School.classrooms.add(new Classroom("Class1",new Teacher(0, "First Teacher", "firstteacher@email", 32, 3232)));
         neu.printClassroominformation();
         int i = 0;
-        for(Student student: studentList){
+        for(Person student: studentlist){
             data[i][0] = student.getId();
             data[i][1] = student.getName();
             data[i][2] = student.getAge();

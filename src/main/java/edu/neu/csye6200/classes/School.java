@@ -6,22 +6,30 @@ import java.util.Vector;
 
 public class School {
     public static List<Classroom> classrooms;
-    public static List<Teacher> teachers;
-    //  Teacher (int id, String name, String email, int salary, int studentsNumber)
+    public static List<Person> studentlist;
+    public static List<Person> teacherlist;
+
     private static final School instance = new School();
     private School (){
         classrooms = new ArrayList<>();
-        teachers = new ArrayList<>();
+        teacherlist = new ArrayList<>();
+        studentlist = new ArrayList<>();
     }
     public static School getInstance( ) {
         return instance;
     }
-    // new Classroom(new Teacher(0, "First Teacher", "firstteacher@email", 20000, 0));
-    //
+
     public void printClassroominformation( ) {
         for (Classroom C: classrooms) {
-            System.out.print(C.teacher.getName());
+            System.out.print(C.getTeacher().getName());
         }
     }
 
+    public static void addStudent(Person person){studentlist.add(person);}
+    public static void addTeacher(Person person){teacherlist.add(person);}
+    public static void addClassroom(Classroom classroom){classrooms.add(classroom);}
+
+    public static List<Classroom> getClassrooms() {return classrooms;}
+    public static List<Person> getStudentlist() {return studentlist;}
+    public static List<Person> getTeacherlist() {return teacherlist;}
 }

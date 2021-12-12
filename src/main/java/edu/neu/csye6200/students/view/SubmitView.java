@@ -15,6 +15,7 @@ import java.util.Vector;
 import edu.neu.csye6200.classes.Demo;
 import edu.neu.csye6200.classes.School;
 import edu.neu.csye6200.classes.Student;
+import edu.neu.csye6200.classes.StudentFactory;
 import utility.EmailValidator;
 import utility.mapStringNumber;
 
@@ -82,10 +83,12 @@ public class SubmitView {
                     assert curClass != null;
                     int curClassIdx = mapStringNumber.convertStringtoNumber(curClass);
                     System.out.println(curClassIdx);
-                    School.classrooms.get(curClassIdx).studentList.add(new Student(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
+//                    School.classrooms.get(curClassIdx).studentList.add(new Student(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
+                    School.classrooms.get(curClassIdx).getStudentList().add(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
 //                    DataView.data.addElement(row3);
 //                    DataView.data.length ++;
-                    Demo.addStudent(new Student(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
+                    School.addStudent(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
+                    ;
 //                    dataInstance.mainTablemodel = TableModel.analyzeData(DataView.data);
 //                    dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
                     dataInstance.mainTablemodel.addRow(new Object[]{id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade});
