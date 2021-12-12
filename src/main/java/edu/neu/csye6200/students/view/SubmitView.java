@@ -84,7 +84,7 @@ public class SubmitView {
                     int curClassIdx = mapStringNumber.convertStringtoNumber(curClass);
                     System.out.println(curClassIdx);
 //                    School.classrooms.get(curClassIdx).studentList.add(new Student(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
-                    School.classrooms.get(curClassIdx).studentList.add(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
+                    School.classrooms.get(curClassIdx).getStudentList().add(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
 //                    DataView.data.addElement(row3);
 //                    DataView.data.length ++;
                     Demo.addStudent(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));

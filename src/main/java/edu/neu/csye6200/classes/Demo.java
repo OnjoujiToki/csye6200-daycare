@@ -8,21 +8,21 @@ import java.util.List;
 import java.util.Vector;
 
 public class Demo {
-    public static List<Student> studentList = new ArrayList<>();
+    public static List<Person> studentList = new ArrayList<>();
     static Vector<Person> teacherList = new Vector<>();
     FileUtil fileUtil = new FileUtil();
     public void run() {
         new LoginView();
         String csvFile = fileUtil.readCSVFile("Students.csv");
-         new Student(csvFile);
+         StudentFactory.addObject(csvFile);
     }
 //    public String readStudentsFromFile(){
 //
 //    }
-    public List<Student> getStudentsList(){
+    public List<Person> getStudentsList(){
         return studentList;
     }
-    public static void addStudent(Student p){
+    public static void addStudent(Person p){
         Demo.studentList.add(p);
     }
 }

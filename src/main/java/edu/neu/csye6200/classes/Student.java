@@ -8,8 +8,7 @@ import java.util.Vector;
 public class Student extends Person{
     private String parent;
     private Grades grades;
-    private Teacher teacher;
-    StudentFactory factory = new StudentFactory();
+    private Classroom classroom;
 
     public Student(int id, String name, int age, String email,  String parent, Grades grades) {
         super(id, name, age, email);
@@ -20,8 +19,8 @@ public class Student extends Person{
     public String getParent() {return parent;}
     public void setParent(String parent) {this.parent = parent;}
 
-    public Teacher getTeacher() {return teacher;}
-    public void setTeacher(Teacher teacher) {this.teacher = teacher;}
+    public Classroom getClassroom() {return classroom;}
+    public void setClassroom(Classroom classroom) {this.classroom = classroom;}
 
     public int getMath() {return grades.getMath();}
     public void setMath(int math) {grades.setMath(math);}
@@ -41,29 +40,18 @@ public class Student extends Person{
     public int getMusic() {return grades.getMusic();}
     public void setMusic(int music) {grades.setMusic(music);}
 
-
-    public Student(String csvFile) {
-        super();
-        String[] fileOutput = csvFile.split("\\r?\\n");
-        for (String inputLine : fileOutput) {
-            Scanner input = new Scanner(inputLine);
-            input.useDelimiter(",");
-            int id = input.nextInt();
-            String name = input.next();
-            int age = input.nextInt();
-            String parent = input.next();
-            String email = input.next();
-            int math = input.nextInt();
-            int english = input.nextInt();
-            int chemistry = input.nextInt();
-            int physics = input.nextInt();
-            int java = input.nextInt();
-            int music = input.nextInt();
-            Demo.studentList.add(factory.getObject(id, name, age, parent, email, math, english, chemistry, physics, java, music));
-            input.close();
+    public Person getTeacher(){
+        for (Person teacher:School.getTeacherlist()){
+            if (teacher.getClassroom().getName()==this.getClassroom().getName()){
+                return teacher;
+            }
         }
+        return null;
     }
 
-    }
+
+
+
+}
 
 

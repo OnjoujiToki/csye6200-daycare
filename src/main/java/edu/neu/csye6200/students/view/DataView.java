@@ -111,7 +111,7 @@ public class DataView extends JFrame {
         School.classrooms.add(new Classroom(new Teacher(0, "First Teacher", "firstteacher@email", 20000, 0)));
         neu.printClassroominformation();
         int i = 0;
-        for(Student student: studentList){
+        for(Person student: studentList){
             data[i][0] = student.getId();
             data[i][1] = student.getName();
             data[i][2] = student.getAge();

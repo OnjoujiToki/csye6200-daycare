@@ -27,9 +27,21 @@ public abstract class Person {
     public int getAge() {return age;}
     public void setAge(int age) {this.age = age;}
 
+    public abstract Classroom getClassroom();
+    public abstract void setClassroom(Classroom classroom);
     public abstract String getParent();
     public abstract void setParent(String parent);
-    public abstract Teacher getTeacher();
-    public abstract void setTeacher(Teacher teacher);
+    public abstract int getMath();
+    public abstract void setMath(int math);
+    public abstract int getEnglish();
+    public abstract void setEnglish(int english);
+    public abstract int getChemistry();
+    public abstract void setChemistry(int chemistry);
+    public abstract int getPhysics();
+    public abstract void setPhysics(int physics);
+    public abstract int getJava();
+    public abstract void setJava(int javava);
+    public abstract int getMusic();
+    public abstract void setMusic(int music);
 //    public abstract
 }

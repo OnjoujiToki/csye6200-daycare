@@ -6,18 +6,16 @@ import java.util.Vector;
 
 public class Classroom {
 
-    public Vector<Student> studentList;
-    public Teacher teacher;
-    //Student(int id, int age, String name, String parent, String email, int math, int english, int chemistry, int physics, int java ,int music)
-    public Classroom(Teacher headTeacher) {
-        studentList = new Vector<Student>();
-       // studentList.add(new Student(1, "Zhihao Zhang", "Renai Zhang","z@moon.moe",100,100,100,100,59,100));
-        this.teacher = headTeacher;
+    private String name;
+    private Teacher teacher;
+    private List<Person> studentList = new ArrayList<>();
 
+    public Classroom(Teacher headTeacher) {
+        this.teacher = headTeacher;
     }
     public void printStudentsInformation() {
         if (studentList != null) {
-            for (Student s:studentList) {
+            for (Person s:studentList) {
                 System.out.println(s.getName());
             }
         }
@@ -25,8 +23,16 @@ public class Classroom {
 
     }
 
-    public void addStudent(Student newStudent) {
+    public void addStudent(Person newStudent) {
         studentList.add(newStudent);
     }
+    public void setTeacher(Teacher newTeacher) {
+        this.teacher=newTeacher;
+    }
+
+    public String getName(){return this.name;}
+    public Teacher getTeacher(){return this.teacher;}
+    public List<Person> getStudentList(){return this.studentList;}
+
 
 }
