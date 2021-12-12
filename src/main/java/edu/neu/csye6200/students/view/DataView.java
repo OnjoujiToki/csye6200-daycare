@@ -25,6 +25,7 @@ public class DataView extends JFrame {
     public JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
     public static Table mainTable =  new Table();
     JButton addClassButton = new JButton("New Class");
+    JButton addClassRoomButton = new JButton("Add Classroom");
     public JButton addButton = new JButton("Add");
     public JComboBox classroomCombox = new JComboBox();
     public JComboBox passvalueCombox = new JComboBox();
@@ -44,6 +45,7 @@ public class DataView extends JFrame {
     ExportClick exportButtonClickEvent = new ExportClick(this);
     SwitchClick switchButtonClickEvent = new SwitchClick(this);
     SearchClick searchButtonClickEvent = new SearchClick(this);
+    AddClassroomClick addClassroomClickEvent = new AddClassroomClick(this);
     TrayIcon trayIcon;
 
     public static Vector<Object> data1 = new Vector<>();
@@ -102,13 +104,14 @@ public class DataView extends JFrame {
         // csye6200.printStudentsInformation();
         addButton.addActionListener(addButtonClickEvent);
         addClassButton.addActionListener(addClassButtonClickEvent);
+        addClassRoomButton.addActionListener(addClassroomClickEvent);
         deleteButton.addActionListener(deleteButtonClickEvent);
         importButton.addActionListener(importButtonClickEvent);
         exportButton.addActionListener(exportButtonClickEvent);
         switchButton.addActionListener(switchButtonClickEvent);
         searchButton.addActionListener(searchButtonClickEvent);
         School neu = School.getInstance();
-        School.classrooms.add(new Classroom(new Teacher(0, "First Teacher", "firstteacher@email", 20000, 0)));
+        School.classrooms.add(new Classroom("Class1",new Teacher(0, "First Teacher", "firstteacher@email", 32, 3232)));
         neu.printClassroominformation();
         int i = 0;
         for(Student student: studentList){
@@ -139,6 +142,7 @@ public class DataView extends JFrame {
         // update Button
         operationPanel.add(addClassButton);
         operationPanel.add(addButton);
+        operationPanel.add(addClassRoomButton);
         operationPanel.add(importButton);
         operationPanel.add(exportButton);
         operationPanel.add(deleteButton);

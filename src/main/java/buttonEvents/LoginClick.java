@@ -1,5 +1,7 @@
 package buttonEvents;
 
+import edu.neu.csye6200.students.view.ClassroomDetails;
+import edu.neu.csye6200.students.view.Dashboard;
 import edu.neu.csye6200.students.view.DataView;
 import edu.neu.csye6200.students.view.LoginView;
 
@@ -41,8 +43,14 @@ public class LoginClick implements ActionListener {
         } else {
             // enter into the main panel
             new DataView();
-            instance.dispose();
-            instance.setVisible(false);
+//            JFrame jFrame = new JFrame("Dashboard");
+////                Dashboard dashboard = new Dashboard();
+//            jFrame.setContentPane(new Dashboard().$$$getRootComponent$$$());
+//            jFrame.pack();
+//            jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+//            jFrame.setVisible(true);
+//            instance.dispose();
+//            instance.setVisible(false);
         }
     }
 

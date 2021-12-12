@@ -1,13 +1,17 @@
 package edu.neu.csye6200.classes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class School {
-    public static Vector<Classroom> classrooms;
+    public static List<Classroom> classrooms;
+    public static List<Teacher> teachers;
     //  Teacher (int id, String name, String email, int salary, int studentsNumber)
     private static final School instance = new School();
     private School (){
-        classrooms = new Vector<Classroom>();
+        classrooms = new ArrayList<>();
+        teachers = new ArrayList<>();
     }
     public static School getInstance( ) {
         return instance;

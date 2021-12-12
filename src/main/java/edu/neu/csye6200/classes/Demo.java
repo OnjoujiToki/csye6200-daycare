@@ -13,6 +13,7 @@ public class Demo {
     FileUtil fileUtil = new FileUtil();
     public void run() {
         new LoginView();
+        School.getInstance();
         String csvFile = fileUtil.readCSVFile("Students.csv");
          new Student(csvFile);
     }

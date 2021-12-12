@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddClassView {
+public class AddTeacherView {
     private JPanel mainPanel;
     private JTextField idField;
     private JTextField salaryField;
@@ -24,16 +24,18 @@ public class AddClassView {
     private JLabel idlabel;
     private JLabel emailLabel;
     private JButton submitButton;
+    private JTextField ageField;
+    private JLabel ageLabel;
 
-    public AddClassView(DataView view) {
+    public AddTeacherView(DataView view) {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name = idField.getText();
+                String name = nameField.getText();
                 int salary = Integer.parseInt(salaryField.getText());
                 String email = emailField.getText();
                 int id = Integer.parseInt(idField.getText());
-
+                int age = Integer.parseInt(ageField.getText());
 
                 EmailValidator emailValidator = new EmailValidator();
 
@@ -42,17 +44,17 @@ public class AddClassView {
                     JOptionPane.showMessageDialog(null, "your Email seems weird...");
                 } else {
                     // There must be a better solution
-                    Classroom newClassroom = new Classroom(new Teacher(id, name, email, salary, 0));
-                    School.classrooms.add(newClassroom);
+//                    Classroom newClassroom = new Classroom();
+//                    School.classrooms.add(newClassroom);
+                    School.teachers.add(new Teacher(id, name, email, age, salary));
                     String comboSequence = mapStringNumber.generateNextPermutation(School.classrooms.size());
                     DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
                     comboBoxModel.addElement(" ");
-                    for (int i = 1; i <= School.classrooms.size(); i++) {
-                        comboBoxModel.addElement("CLassroom " + mapStringNumber.generateNextPermutation(i));
+                    for (Classroom cl : School.classrooms) {
+                        comboBoxModel.addElement(cl);
                     }
                     view.classroomCombox.setModel(comboBoxModel);
                 }
-
 
 
             }
@@ -75,11 +77,11 @@ public class AddClassView {
      */
     private void $$$setupUI$$$() {
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayoutManager(6, 2, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel.setLayout(new GridLayoutManager(7, 2, new Insets(0, 0, 0, 0), -1, -1));
         idField = new JTextField();
         mainPanel.add(idField, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         salaryField = new JTextField();
-        mainPanel.add(salaryField, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        mainPanel.add(salaryField, new GridConstraints(4, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         emailField = new JTextField();
         mainPanel.add(emailField, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         nameField = new JTextField();
@@ -99,10 +101,15 @@ public class AddClassView {
         salaryLabel = new JLabel();
         salaryLabel.setHorizontalTextPosition(11);
         salaryLabel.setText("Salary:");
-        mainPanel.add(salaryLabel, new GridConstraints(3, 0, 2, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(salaryLabel, new GridConstraints(4, 0, 2, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         submitButton = new JButton();
         submitButton.setText("Submit");
-        mainPanel.add(submitButton, new GridConstraints(5, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(submitButton, new GridConstraints(6, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        ageLabel = new JLabel();
+        ageLabel.setText("Age");
+        mainPanel.add(ageLabel, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        ageField = new JTextField();
+        mainPanel.add(ageField, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
 
     /**

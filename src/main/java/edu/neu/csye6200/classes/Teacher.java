@@ -66,4 +66,8 @@ public class Teacher extends Person{
         return this.enterTime;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
