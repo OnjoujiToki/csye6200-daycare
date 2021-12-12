@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Dashboard {
+public class Dashboard extends JFrame {
     private JPanel jPanel1;
     private JLabel headingLabel;
     private JButton studentsButton;
@@ -19,24 +19,37 @@ public class Dashboard {
         classroomsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame jFrame = new JFrame("Add ClassRoom");
-                jFrame.setContentPane(new ClassroomDetails().$$$getRootComponent$$$());
-                jFrame.pack();
-                jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+////                JFrame jFrame = new JFrame("ClassRoom Details");
+//                setContentPane(new ClassroomDetails().$$$getRootComponent$$$());
+//                pack();
+//                setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+                new ClassroomDetails();
             }
         });
         teachersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+//                JFrame jFrame = new JFrame("Teacher Details");
+//                setContentPane(new ClassroomDetails().$$$getRootComponent$$$());
+//                pack();
+//                setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+                new TeacherDetails();
             }
         });
         studentsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new DataView();
             }
         });
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setContentPane(this.$$$getRootComponent$$$());
+        this.pack();
+        setVisible(true);
+        setResizable(true); // make it nonchangeable
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // exit when closing
+        Dimension curScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((curScreenSize.width - 600) / 2, (curScreenSize.height - 400) / 2);
     }
 
     {
@@ -81,4 +94,5 @@ public class Dashboard {
     public JComponent $$$getRootComponent$$$() {
         return jPanel1;
     }
+
 }

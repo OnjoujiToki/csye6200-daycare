@@ -15,7 +15,9 @@ public class Teacher extends Person{
     public String toString() {
         return super.getName();
     }
+    @Override
     public int getSalary() {return salary;}
+    @Override
     public void setSalary(int salary) {this.salary = salary;}
 
 //    public Vector<Person> getStudents(){

@@ -14,8 +14,10 @@ public class Demo {
     public void run() {
         new LoginView();
         School.getInstance();
-        String csvFile = fileUtil.readCSVFile("Students.csv");
-         StudentFactory.addObject(csvFile);
+        String studentCsvFile = fileUtil.readCSVFile("Students.csv");
+         StudentFactory.addObject(studentCsvFile);
+        String teacherCsvFile = fileUtil.readCSVFile("Teachers.csv");
+        TeacherFactory.getInstance().addObject(teacherCsvFile);
     }
 //    public String readStudentsFromFile(){
 //

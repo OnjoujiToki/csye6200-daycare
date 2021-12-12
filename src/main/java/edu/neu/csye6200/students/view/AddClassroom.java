@@ -36,6 +36,27 @@ public class AddClassroom {
 
 //                teacherName.addElement(" ");
                 School.classrooms.add(new Classroom(classroom, teacher));
+            }
+        });
+    }
+
+    public AddClassroom(ClassroomDetails classroomDetails) {
+        {
+            DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+            for (Person t : School.getTeacherlist()) {
+                comboBoxModel.addElement(t);
+            }
+            teacherName.setModel(comboBoxModel);
+        }
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String classroom = classroomName.getText();
+                Teacher teacher = (Teacher) teacherName.getSelectedItem();
+
+//                teacherName.addElement(" ");
+                School.classrooms.add(new Classroom(classroom, teacher));
+                classroomDetails.maintableModel.addRow(new Object[]{classroomDetails.maintableModel.getRowCount() + 1, classroom, teacher});
                 System.out.println("jggjhhjk");
             }
         });

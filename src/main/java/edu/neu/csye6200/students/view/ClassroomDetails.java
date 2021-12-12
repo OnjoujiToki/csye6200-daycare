@@ -4,27 +4,41 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import database.Table;
-import database.TableModel;
-import database.TableProperty;
 import edu.neu.csye6200.classes.Classroom;
 import edu.neu.csye6200.classes.School;
 import edu.neu.csye6200.classes.Teacher;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class ClassroomDetails {
+public class ClassroomDetails extends JFrame {
+    ClassroomDetails classroomDetails;
     private JTable classroomTable;
     private JPanel jPanel1;
-    private JFrame frame = new JFrame();
-    DefaultTableModel maintableModel = new DefaultTableModel();
+    private JButton deleteClassroomButton;
+    private JButton addClassroomButton;
+    private JPanel panel1;
+    //    private JFrame frame = new JFrame();
     String[] columnNames = {"Id", "ClassroomName", "Teacher"};
+    DefaultTableModel maintableModel = new DefaultTableModel() {
+        @Override
+        public int getColumnCount() {
+            return columnNames.length;
+        }
+
+        @Override
+        public String getColumnName(int index) {
+            return columnNames[index];
+        }
+    };
 
     public ClassroomDetails() {
-        System.out.println("------------------");
-        School.classrooms.add(new Classroom("Calss", new Teacher(1, "jka", "ks@gmail.com", 23, 323)));
+        classroomDetails = this;
+        System.out.println("---------jnjnj---------");
+        School.classrooms.add(new Classroom("ClassName", new Teacher(1, "ks@gmail.com", "Katherine", 23, 323)));
         Object[][] classRoomObject = new Object[School.classrooms.size()][3];
         int i = 0;
         for (Classroom c : School.classrooms) {
@@ -32,19 +46,45 @@ public class ClassroomDetails {
             classRoomObject[i][1] = c.getName();
             classRoomObject[i][2] = c.getTeacher().toString();
         }
-//        classroomTable = new Table();
         maintableModel.setDataVector(classRoomObject, columnNames);
         classroomTable.setModel(maintableModel);
         classroomTable.setBounds(30, 40, 200, 300);
+//        JScrollPane sp = new JScrollPane(jPanel1);
+//        add(sp);
+        add(new JScrollPane(this.$$$getRootComponent$$$()));
+        addClassroomButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame jFrame = new JFrame("Add ClassRoom");
+                jFrame.setContentPane(new AddClassroom(classroomDetails).$$$getRootComponent$$$());
+                jFrame.pack();
+                jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+                jFrame.setVisible(true);
+            }
+        });
+        deleteClassroomButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int getSelectedRowForDeletion = classroomTable.getSelectedRow();
+                System.out.println("Dsadas" + classroomTable.getSelectedRow());
+                //Check if their is a row selected
+                if (getSelectedRowForDeletion != -1) {
+                    maintableModel.removeRow(getSelectedRowForDeletion);
 
-        // adding it to JScrollPane
-        JScrollPane sp = new JScrollPane(classroomTable);
-        frame.add(sp);
-        // Frame Size
-        frame.setSize(500, 200);
-        // Frame Visible = true
-        frame.setVisible(true);
-//        classroomTable.render();
+                    JOptionPane.showMessageDialog(null, "Row Deleted");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Unable To Delete");
+                }
+            }
+        });
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        this.setContentPane(this.$$$getRootComponent$$$());
+        this.pack();
+        setVisible(true);
+        setResizable(true); // make it nonchangeable
+        setDefaultCloseOperation(EXIT_ON_CLOSE); // exit when closing
+        Dimension curScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((curScreenSize.width - 600) / 2, (curScreenSize.height - 400) / 2);
     }
 
     {
@@ -63,11 +103,20 @@ public class ClassroomDetails {
      */
     private void $$$setupUI$$$() {
         jPanel1 = new JPanel();
-        jPanel1.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
+        jPanel1.setLayout(new GridLayoutManager(3, 1, new Insets(0, 0, 0, 0), -1, -1));
         classroomTable = new JTable();
-        jPanel1.add(classroomTable, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        jPanel1.add(classroomTable, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         final Spacer spacer1 = new Spacer();
-        jPanel1.add(spacer1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        jPanel1.add(spacer1, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        panel1 = new JPanel();
+        panel1.setLayout(new GridLayoutManager(1, 2, new Insets(12, 12, 12, 12), -1, -1));
+        jPanel1.add(panel1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        deleteClassroomButton = new JButton();
+        deleteClassroomButton.setText("Delete Classroom");
+        panel1.add(deleteClassroomButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        addClassroomButton = new JButton();
+        addClassroomButton.setText("Add Classroom");
+        panel1.add(addClassroomButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**

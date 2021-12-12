@@ -42,7 +42,7 @@ public class LoginClick implements ActionListener {
             JOptionPane.showMessageDialog(instance, "User name or password is wrong!");
         } else {
             // enter into the main panel
-            new DataView();
+            new Dashboard();
 //            JFrame jFrame = new JFrame("Dashboard");
 ////                Dashboard dashboard = new Dashboard();
 //            jFrame.setContentPane(new Dashboard().$$$getRootComponent$$$());
