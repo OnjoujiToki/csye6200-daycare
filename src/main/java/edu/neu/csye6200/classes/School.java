@@ -4,6 +4,9 @@ import java.util.Vector;
 
 public class School {
     public static Vector<Classroom> classrooms;
+    public static Vector<Person> studentlist;
+    public static Vector<Person> teacherlist;
+
     //  Teacher (int id, String name, String email, int salary, int studentsNumber)
     private static final School instance = new School();
     private School (){

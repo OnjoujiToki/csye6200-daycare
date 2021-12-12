@@ -6,33 +6,44 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Student extends Person{
-    private int id;
-    private String name;
     private String parent;
-    private String email;
-    private int age;
-    private int math;
-    private int english;
-    private int chemistry;
-    private int physics;
-    private int java;
-    private int music;
-    Vector<Person> studentsList = new Vector<>();
+    private Grades grades;
+    private Teacher teacher;
     StudentFactory factory = new StudentFactory();
-    public Student(int id, String name, int age, String parent, String email, int math, int english, int chemistry, int physics, int java, int music) {
-        this.id = id;
-        this.name = name;
+
+    public Student(int id, String name, int age, String email,  String parent, Grades grades) {
+        super(id, name, age, email);
         this.parent = parent;
-        this.email = email;
-        this.math = math;
-        this.english = english;
-        this.chemistry = chemistry;
-        this.physics = physics;
-        this.java = java;
-        this.music = music;
-        this.age = age;
+        this.grades = grades;
     }
+
+    public String getParent() {return parent;}
+    public void setParent(String parent) {this.parent = parent;}
+
+    public Teacher getTeacher() {return teacher;}
+    public void setTeacher(Teacher teacher) {this.teacher = teacher;}
+
+    public int getMath() {return grades.getMath();}
+    public void setMath(int math) {grades.setMath(math);}
+
+    public int getEnglish() {return grades.getEnglish();}
+    public void setEnglish(int english) {grades.setEnglish(english);}
+
+    public int getChemistry() {return grades.getChemistry();}
+    public void setChemistry(int chemistry) {grades.setChemistry(chemistry);}
+
+    public int getPhysics() {return grades.getPhysics();}
+    public void setPhysics(int physics) {grades.setPhysics(physics);}
+
+    public int getJava() {return grades.getJava();}
+    public void setJava(int java) {grades.setJava(java);}
+
+    public int getMusic() {return grades.getMusic();}
+    public void setMusic(int music) {grades.setMusic(music);}
+
+
     public Student(String csvFile) {
+        super();
         String[] fileOutput = csvFile.split("\\r?\\n");
         for (String inputLine : fileOutput) {
             Scanner input = new Scanner(inputLine);
@@ -52,66 +63,7 @@ public class Student extends Person{
             input.close();
         }
     }
-    public String getName() {return this.name;}
-    public int getId() {return this.id;}
-    public String getParent() {return this.parent;}
-    public String getEmail() {return this.email;}
-    public int getMath() {return this.math;}
-    public int getEnglish() {return this.english;}
-    public int getPhysics() {return this.physics;}
-    public int getJava() {return this.java;}
-    public int getChemistry() {return this.chemistry;}
-    public int getMusic() {return this.music;}
-    @Override
-    public void setId(int id) {
-        this.id = id;
+
     }
 
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public int getAge() {
-        return this.age;
-    }
-
-    @Override
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setParent(String parent) {
-        this.parent = parent;
-    }
-
-    public void setMath(int math) {
-        this.math = math;
-    }
-
-    public void setEnglish(int english) {
-        this.english = english;
-    }
-
-    public void setChemistry(int chemistry) {
-        this.chemistry = chemistry;
-    }
-
-    public void setPhysics(int physics) {
-        this.physics = physics;
-    }
-
-    public void setJava(int java) {
-        this.java = java;
-    }
-
-    public void setMusic(int music) {
-        this.music = music;
-    }
-}
