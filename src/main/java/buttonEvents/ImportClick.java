@@ -1,27 +1,16 @@
 package buttonEvents;
 
-import database.TableModel;
-//import edu.neu.csye6200.students.view.AddView;
-import edu.neu.csye6200.classes.Demo;
-import edu.neu.csye6200.classes.School;
-import edu.neu.csye6200.classes.Student;
 import edu.neu.csye6200.classes.StudentFactory;
 import edu.neu.csye6200.students.view.DataView;
-import edu.neu.csye6200.students.view.LoginView;
-import buttonEvents.*;
-import edu.neu.csye6200.students.view.SubmitView;
 import utility.FileUtil;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.File;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Vector;
+import java.util.List;
+
+import edu.neu.csye6200.classes.*;
+
 
 public class ImportClick implements ActionListener {
     private final DataView instance;
@@ -39,9 +28,14 @@ public class ImportClick implements ActionListener {
             File f = chooser.getSelectedFile();
             String csvFile = fileUtil.readCSVFile(f.getName());
             this.instance.dispose();
-            School.studentlist.removeAll(School.studentlist);
-            StudentFactory.addObject(csvFile);
-            new DataView();
+            Classroom tmpclassrom = new Classroom();
+            School.addClassroom(tmpclassrom);
+            List<Person> tmplist = (StudentFactory.addObject(csvFile));
+            tmpclassrom.setStudentList(tmplist);
+            for (Person student : tmplist) {
+                student.setClassroom(tmpclassrom);
+            }
+             new DataView();
             // read  and/or display the file somehow. ....
         } else {
             // user changed their mind

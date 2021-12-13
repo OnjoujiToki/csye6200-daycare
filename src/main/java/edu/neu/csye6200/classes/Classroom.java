@@ -5,16 +5,24 @@ import java.util.List;
 import java.util.Vector;
 
 public class Classroom {
-    // studentList.add(new Student(1, "Zhihao Zhang", "Renai Zhang","z@moon.moe",100,100,100,100,59,100));
 
     private String name;
-    private Teacher teacher;
+    private Person teacher;
     private List<Person> studentList = new ArrayList<>();
 
     public Classroom(String name, Teacher headTeacher) {
         this.name = name;
         studentList = new ArrayList<>();
         this.teacher = headTeacher;
+    }
+
+    public Classroom(){
+       int i = School.getClassrooms().size()+65;
+       int j = School.getClassrooms().size();
+       char l = (char)i;
+       this.name="Classroom "+l;
+       studentList=new ArrayList<>();
+       this.teacher=School.getTeacherlist().get(j);
     }
     public Classroom(Teacher headTeacher) {
         this.teacher = headTeacher;
@@ -45,7 +53,9 @@ public class Classroom {
     }
 
     public String getName(){return this.name;}
-    public Teacher getTeacher(){return this.teacher;}
+    public Person getTeacher(){return this.teacher;}
     public List<Person> getStudentList(){return this.studentList;}
     public void setStudentList(List<Person> studentList) {this.studentList = studentList;}
+
+
 }
