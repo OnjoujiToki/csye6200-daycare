@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddClassroom {
+public class AddClassroom extends JFrame {
     private JLabel classroom;
     private JTextField classroomName;
     private JComboBox teacherName;
@@ -24,6 +24,10 @@ public class AddClassroom {
 
     public AddClassroom(DataView dataView) {
         {
+            setPreferredSize(new Dimension(500, 600));
+            pack();
+            setLocationRelativeTo(null);
+            setVisible(true);
             DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
             for (Person t : School.getTeacherlist()) {
                 comboBoxModel.addElement(t);
@@ -35,8 +39,6 @@ public class AddClassroom {
             public void actionPerformed(ActionEvent e) {
                 String classroom = classroomName.getText();
                 Teacher teacher = (Teacher) teacherName.getSelectedItem();
-
-//                teacherName.addElement(" ");
                 School.classrooms.add(new Classroom(classroom, teacher));
             }
         });
@@ -59,7 +61,6 @@ public class AddClassroom {
 //                teacherName.addElement(" ");
                 School.classrooms.add(new Classroom(classroom, teacher));
                 classroomDetails.maintableModel.addRow(new Object[]{classroomDetails.maintableModel.getRowCount() + 1, classroom, teacher});
-                System.out.println("jggjhhjk");
             }
         });
     }
