@@ -28,12 +28,16 @@ public class ImportClick implements ActionListener {
             File f = chooser.getSelectedFile();
             String csvFile = fileUtil.readCSVFile(f.getName());
             this.instance.dispose();
-            Classroom tmpclassrom = new Classroom();
-            School.addClassroom(tmpclassrom);
-            List<Person> tmplist = (StudentFactory.addObject(csvFile));
-            tmpclassrom.setStudentList(tmplist);
-            for (Person student : tmplist) {
-                student.setClassroom(tmpclassrom);
+            String curClassroom = (String) instance.classroomCombox.getSelectedItem();
+            for (Classroom classroom:School.getClassrooms()){
+                if (curClassroom==classroom.getName()){
+                    List<Person> tmplist = (StudentFactory.addObject(csvFile));
+                    classroom.setStudentList(tmplist);
+                    for (Person student:tmplist){
+                        student.setClassroom(classroom);
+                    }
+
+                }
             }
 
             for (Classroom classroom : School.getClassrooms()) {
