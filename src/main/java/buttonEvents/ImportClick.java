@@ -35,6 +35,14 @@ public class ImportClick implements ActionListener {
             for (Person student : tmplist) {
                 student.setClassroom(tmpclassrom);
             }
+
+            for (Classroom classroom : School.getClassrooms()) {
+                for (Person student : School.getStudentlist()) {
+                    if (student.getClassroom().getName() == classroom.getName()) {
+                        System.out.println(student.getClassroom().getName());
+                    }
+                }
+            }
              new DataView();
             // read  and/or display the file somehow. ....
         } else {
