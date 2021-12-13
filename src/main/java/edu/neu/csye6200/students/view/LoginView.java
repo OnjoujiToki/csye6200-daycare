@@ -11,7 +11,7 @@ import java.awt.event.WindowEvent;
 import java.net.URL;
 
 public class LoginView extends JFrame {
-    JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
+    JLabel titleLabel = new JLabel("Student Management System", JLabel.CENTER);
     // borderoutlayout + jpanel
     SpringLayout springLayout = new SpringLayout();
     JPanel SpringPanel = new JPanel(springLayout);

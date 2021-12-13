@@ -32,7 +32,7 @@ public class StudentFactory {
             int music = input.nextInt();
 
             tmpStudent = StudentFactory.getObject(id, name, age, parent, email, math, english, chemistry, physics, java, music);
-//            School.addStudent(tmpStudent);
+            School.addStudent(tmpStudent);
             tmplist.add(tmpStudent);
         }
         return tmplist;

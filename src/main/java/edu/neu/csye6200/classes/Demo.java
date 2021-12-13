@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class Demo {
 //    public static List<Person> studentList = School.getStudentlist();
-    static Vector<Person> teacherList = new Vector<>();
+//    static Vector<Person> teacherList = new Vector<>();
     FileUtil fileUtil = new FileUtil();
     public void run() {
         new LoginView();
