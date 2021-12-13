@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Vector;
 
 public class Demo {
-//    public static List<Person> studentList = School.getStudentlist();
-//    static Vector<Person> teacherList = new Vector<>();
-    FileUtil fileUtil = new FileUtil();
+
     public void run() {
         FileUtil fileUtil = new FileUtil();
         new LoginView();
@@ -43,13 +41,4 @@ public class Demo {
             }
         }
     }
-//    public String readStudentsFromFile(){
-//
-//    }
-//    public List<Person> getStudentsList(){
-//        return studentList;
-//    }
-//    public static void addStudent(Person p){
-//        Demo.studentList.add(p);
-//    }
 }
