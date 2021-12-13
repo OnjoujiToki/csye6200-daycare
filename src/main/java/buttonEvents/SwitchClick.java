@@ -31,7 +31,7 @@ public class SwitchClick implements ActionListener {
         String curClassroom = (String) instance.classroomCombox.getSelectedItem();
         int curIdx = 0;
         if (curClassroom != " ") {
-            curIdx = mapStringNumber.convertStringtoNumber(curClassroom);
+//            curIdx = mapStringNumber.convertStringtoNumber(curClassroom);
         } else {
             JOptionPane.showMessageDialog(null, "Please at least select one classroom");
         }
