@@ -25,8 +25,8 @@ public class DataView extends JFrame {
     public JPanel operationPanel = new JPanel();
     public JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
     public static Table mainTable =  new Table();
-    JButton addClassButton = new JButton("New Class");
-    JButton addClassRoomButton = new JButton("Add Classroom");
+//    JButton addClassButton = new JButton("New Class");
+//    JButton addClassRoomButton = new JButton("Add Classroom");
     public JButton addButton = new JButton("Add");
     public JComboBox classroomCombox = new JComboBox();
     public JComboBox passvalueCombox = new JComboBox();
@@ -34,9 +34,9 @@ public class DataView extends JFrame {
     JButton importButton = new JButton("Import");
     JButton exportButton = new JButton("Export");
     JButton deleteButton = new JButton("Delete");
-    JButton switchButton = new JButton("Switch");
+//    JButton switchButton = new JButton("Switch");
 
-    JButton searchButton = new JButton("Set this Score As Pass");
+//    JButton searchButton = new JButton("Set this Score As Pass");
     JButton nextButton = new JButton("Next");
     JButton preButton = new JButton("Last");
 //    AddClassClick addClassButtonClickEvent = new AddClassClick(this);
@@ -73,10 +73,10 @@ public class DataView extends JFrame {
         classroomCombox.setModel(defaultComboBoxModel1);
         classroomCombox.addActionListener(switchButtonClickEvent);
         DefaultComboBoxModel defaultComboBoxModel2 = new DefaultComboBoxModel();
-        defaultComboBoxModel2.addElement("30");
-        defaultComboBoxModel2.addElement("40");
-        defaultComboBoxModel2.addElement("50");
-        passvalueCombox.setModel(defaultComboBoxModel2);
+//        defaultComboBoxModel2.addElement("30");
+//        defaultComboBoxModel2.addElement("40");
+//        defaultComboBoxModel2.addElement("50");
+//        passvalueCombox.setModel(defaultComboBoxModel2);
         addAllButtons(contentPane);
         // icon image path
         final URL iconPath = DataView.class.getClassLoader().getResource("icon.png");
@@ -116,8 +116,8 @@ public class DataView extends JFrame {
         deleteButton.addActionListener(deleteButtonClickEvent);
         importButton.addActionListener(importButtonClickEvent);
         exportButton.addActionListener(exportButtonClickEvent);
-        switchButton.addActionListener(switchButtonClickEvent);
-        searchButton.addActionListener(searchButtonClickEvent);
+//        switchButton.addActionListener(switchButtonClickEvent);
+//        searchButton.addActionListener(searchButtonClickEvent);
 
         setData(studentlist, columnsNames);
         JScrollPane jScrollPane = new JScrollPane(mainTable);
@@ -149,16 +149,16 @@ public class DataView extends JFrame {
 
     private void addAllButtons(Container contentPane) {
         // update Button
-        operationPanel.add(addClassButton);
+//        operationPanel.add(addClassButton);
         operationPanel.add(addButton);
-        operationPanel.add(addClassRoomButton);
+//        operationPanel.add(addClassRoomButton);
         operationPanel.add(importButton);
         operationPanel.add(exportButton);
         operationPanel.add(deleteButton);
-        operationPanel.add(passvalueCombox);
-        operationPanel.add(searchButton);
+//        operationPanel.add(passvalueCombox);
+//        operationPanel.add(searchButton);
         operationPanel.add(classroomCombox);
-        operationPanel.add(switchButton);
+//        operationPanel.add(switchButton);
         contentPane.add(nextButton);
         contentPane.add(preButton);
         contentPane.add(operationPanel, BorderLayout.NORTH);

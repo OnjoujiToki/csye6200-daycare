@@ -3,18 +3,16 @@ package edu.neu.csye6200.students.view;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
-import database.TableModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 //import edu.neu.csye6200.classes.Classroom;
-import edu.neu.csye6200.classes.Demo;
+import edu.neu.csye6200.classes.Classroom;
+import edu.neu.csye6200.classes.Person;
 import edu.neu.csye6200.classes.School;
-import edu.neu.csye6200.classes.Student;
 import edu.neu.csye6200.classes.StudentFactory;
 import utility.EmailValidator;
 import utility.mapStringNumber;
@@ -39,11 +37,17 @@ public class SubmitView {
     private JLabel mathLabel;
     private JLabel musicLabel;
     private JButton submitButton;
+    private JComboBox classroomCombobox;
     private final DataView dataInstance;
     private String[] columnsNames = {"Id", "Name", "Age", "Parent Name", "Email", "Math", "English", "Chemistry", "Physics", "Java", "Music"};
 
     public SubmitView(DataView dataview) {
         this.dataInstance = dataview;
+        DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
+        for (Classroom c : School.getClassrooms()) {
+            defaultComboBoxModel1.addElement(c);
+        }
+        classroomCombobox.setModel(defaultComboBoxModel1);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,6 +57,7 @@ public class SubmitView {
                 int physicsGrade = Integer.parseInt((String) physicsBox.getSelectedItem());
                 int javaGrade = Integer.parseInt((String) javaBox.getSelectedItem());
                 int musicGrade = Integer.parseInt((String) musicBox.getSelectedItem());
+                Classroom classroom = (Classroom) classroomCombobox.getSelectedItem();
                 int id = Integer.parseInt((String) idField.getText());
                 int age = Integer.parseInt((String) ageField.getText());
                 String parentName = parentField.getText();
@@ -75,8 +80,9 @@ public class SubmitView {
 //                    School.classrooms.get(curClassIdx).getStudentList().add(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
 //                    DataView.data.addElement(row3);
 //                    DataView.data.length ++;
-                    School.addStudent(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
-                    ;
+                    Person student = StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade);
+                    student.setClassroom(classroom);
+                    School.addStudent(student);
 //                    dataInstance.mainTablemodel = TableModel.analyzeData(DataView.data);
 //                    dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
                     dataInstance.mainTablemodel.addRow(new Object[]{id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade});
@@ -104,9 +110,9 @@ public class SubmitView {
      */
     private void $$$setupUI$$$() {
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayoutManager(12, 3, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel.setLayout(new GridLayoutManager(13, 3, new Insets(0, 0, 0, 0), -1, -1));
         final Spacer spacer1 = new Spacer();
-        mainPanel.add(spacer1, new GridConstraints(0, 1, 12, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        mainPanel.add(spacer1, new GridConstraints(0, 1, 13, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         idField = new JTextField();
         idField.setText("");
         mainPanel.add(idField, new GridConstraints(0, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
@@ -133,7 +139,7 @@ public class SubmitView {
         mainPanel.add(emailLabel, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         mathLabel = new JLabel();
         mathLabel.setText("Mathematics");
-        mainPanel.add(mathLabel, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(mathLabel, new GridConstraints(6, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         mathCombox = new JComboBox();
         final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
         defaultComboBoxModel1.addElement("");
@@ -239,10 +245,10 @@ public class SubmitView {
         defaultComboBoxModel1.addElement("99");
         defaultComboBoxModel1.addElement("100");
         mathCombox.setModel(defaultComboBoxModel1);
-        mainPanel.add(mathCombox, new GridConstraints(5, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(mathCombox, new GridConstraints(6, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
         label1.setText("English");
-        mainPanel.add(label1, new GridConstraints(6, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(label1, new GridConstraints(7, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         englishCombox = new JComboBox();
         final DefaultComboBoxModel defaultComboBoxModel2 = new DefaultComboBoxModel();
         defaultComboBoxModel2.addElement("");
@@ -348,10 +354,10 @@ public class SubmitView {
         defaultComboBoxModel2.addElement("99");
         defaultComboBoxModel2.addElement("100");
         englishCombox.setModel(defaultComboBoxModel2);
-        mainPanel.add(englishCombox, new GridConstraints(6, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(englishCombox, new GridConstraints(7, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label2 = new JLabel();
         label2.setText("Chemistry");
-        mainPanel.add(label2, new GridConstraints(7, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(label2, new GridConstraints(8, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         chemistryBox = new JComboBox();
         final DefaultComboBoxModel defaultComboBoxModel3 = new DefaultComboBoxModel();
         defaultComboBoxModel3.addElement("");
@@ -457,10 +463,10 @@ public class SubmitView {
         defaultComboBoxModel3.addElement("99");
         defaultComboBoxModel3.addElement("100");
         chemistryBox.setModel(defaultComboBoxModel3);
-        mainPanel.add(chemistryBox, new GridConstraints(7, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(chemistryBox, new GridConstraints(8, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label3 = new JLabel();
         label3.setText("Physics");
-        mainPanel.add(label3, new GridConstraints(8, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(label3, new GridConstraints(9, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         physicsBox = new JComboBox();
         final DefaultComboBoxModel defaultComboBoxModel4 = new DefaultComboBoxModel();
         defaultComboBoxModel4.addElement("");
@@ -566,10 +572,10 @@ public class SubmitView {
         defaultComboBoxModel4.addElement("99");
         defaultComboBoxModel4.addElement("100");
         physicsBox.setModel(defaultComboBoxModel4);
-        mainPanel.add(physicsBox, new GridConstraints(8, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(physicsBox, new GridConstraints(9, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label4 = new JLabel();
         label4.setText("Java");
-        mainPanel.add(label4, new GridConstraints(9, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(label4, new GridConstraints(10, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         javaBox = new JComboBox();
         final DefaultComboBoxModel defaultComboBoxModel5 = new DefaultComboBoxModel();
         defaultComboBoxModel5.addElement("");
@@ -675,10 +681,10 @@ public class SubmitView {
         defaultComboBoxModel5.addElement("99");
         defaultComboBoxModel5.addElement("100");
         javaBox.setModel(defaultComboBoxModel5);
-        mainPanel.add(javaBox, new GridConstraints(9, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(javaBox, new GridConstraints(10, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         musicLabel = new JLabel();
         musicLabel.setText("Music");
-        mainPanel.add(musicLabel, new GridConstraints(10, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(musicLabel, new GridConstraints(11, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         musicBox = new JComboBox();
         final DefaultComboBoxModel defaultComboBoxModel6 = new DefaultComboBoxModel();
         defaultComboBoxModel6.addElement("");
@@ -784,15 +790,20 @@ public class SubmitView {
         defaultComboBoxModel6.addElement("99");
         defaultComboBoxModel6.addElement("100");
         musicBox.setModel(defaultComboBoxModel6);
-        mainPanel.add(musicBox, new GridConstraints(10, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(musicBox, new GridConstraints(11, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         submitButton = new JButton();
         submitButton.setText("Submit");
-        mainPanel.add(submitButton, new GridConstraints(11, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(submitButton, new GridConstraints(12, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label5 = new JLabel();
         label5.setText("Age");
         mainPanel.add(label5, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         ageField = new JTextField();
         mainPanel.add(ageField, new GridConstraints(2, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        final JLabel label6 = new JLabel();
+        label6.setText("Classroom");
+        mainPanel.add(label6, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        classroomCombobox = new JComboBox();
+        mainPanel.add(classroomCombobox, new GridConstraints(5, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
 
     /**
