@@ -12,6 +12,7 @@ public class Demo {
 //    static Vector<Person> teacherList = new Vector<>();
     FileUtil fileUtil = new FileUtil();
     public void run() {
+        FileUtil fileUtil = new FileUtil();
         new LoginView();
         School.getInstance();
         String teacherCsvFile = fileUtil.readCSVFile("Teachers.csv");
