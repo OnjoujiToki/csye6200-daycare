@@ -46,6 +46,9 @@ public class ClassroomDetails extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame jFrame = new JFrame("Add ClassRoom");
+                jFrame.setPreferredSize(new Dimension(500, 600));
+                jFrame.pack();
+                jFrame.setLocationRelativeTo(null);
                 jFrame.setContentPane(new AddClassroom(classroomDetails).$$$getRootComponent$$$());
                 jFrame.pack();
                 jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);

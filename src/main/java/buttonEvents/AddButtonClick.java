@@ -9,6 +9,7 @@ import edu.neu.csye6200.students.view.SubmitView;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -28,7 +29,10 @@ public class AddButtonClick implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("submit Clicked");
        //new AddView(instance);
-        JFrame jFrame = new JFrame("add");
+        JFrame jFrame = new JFrame("Add Student");
+        jFrame.setPreferredSize(new Dimension(500, 600));
+        jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
         jFrame.setContentPane(new SubmitView(instance).$$$getRootComponent$$$());
         jFrame.pack();
         jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);

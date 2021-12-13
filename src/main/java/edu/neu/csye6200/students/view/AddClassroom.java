@@ -61,6 +61,8 @@ public class AddClassroom extends JFrame {
 //                teacherName.addElement(" ");
                 School.classrooms.add(new Classroom(classroom, teacher));
                 classroomDetails.maintableModel.addRow(new Object[]{classroomDetails.maintableModel.getRowCount() + 1, classroom, teacher});
+                JOptionPane.showMessageDialog(null, "Added Classroom" + classroomName.getText());
+                classroomName.setText("");
             }
         });
     }
@@ -98,13 +100,13 @@ public class AddClassroom extends JFrame {
         teacherName = new JComboBox();
         teacherName.setEditable(false);
         panel1.add(teacherName, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-        classroom = new JLabel();
-        classroom.setAlignmentX(1.0f);
-        classroom.setText("ClassRoom");
-        panel1.add(classroom, new GridConstraints(0, 1, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         submitButton = new JButton();
         submitButton.setText("Submit");
         panel1.add(submitButton, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        classroom = new JLabel();
+        classroom.setAlignmentX(1.0f);
+        classroom.setText("ClassRoom Details");
+        panel1.add(classroom, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
