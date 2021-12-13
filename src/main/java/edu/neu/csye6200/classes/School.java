@@ -32,4 +32,44 @@ public class School {
     public static List<Classroom> getClassrooms() {return classrooms;}
     public static List<Person> getStudentlist() {return studentlist;}
     public static List<Person> getTeacherlist() {return teacherlist;}
+
+    public static List<Person> getStudentsFromClassroom(Classroom classroom){
+        List<Person> tmplist = new ArrayList<>();
+        for (Person student:School.getStudentlist()){
+            if (classroom.getName()==student.getClassroom().getName()){
+                tmplist.add(student);
+            }
+        }
+        return tmplist;
+    }
+    public static List<Person> getStudentsFromClassroom(String classroom){
+        List<Person> tmplist = new ArrayList<>();
+        for (Person student:School.getStudentlist()){
+            if (classroom==student.getClassroom().getName()){
+                tmplist.add(student);
+            }
+        }
+        return tmplist;
+    }
+
+    public static List<Person> getStudentsUnderTeacher(Teacher teacher){
+        List<Person> tmplist = new ArrayList<>();
+        for (Person student:School.getStudentlist()){
+            if (teacher.getClassroom().getName()==student.getClassroom().getName()){
+                tmplist.add(student);
+            }
+        }
+        return tmplist;
+
+    }
+    public static List<Person> getStudentsUnderTeacher(String teacher){
+        List<Person> tmplist = new ArrayList<>();
+        for (Person student:School.getStudentlist()){
+            if (teacher==student.getClassroom().getTeacher().getName()){
+                tmplist.add(student);
+            }
+        }
+        return tmplist;
+
+    }
 }

@@ -42,5 +42,5 @@ public class Classroom {
     public String getName(){return this.name;}
     public Teacher getTeacher(){return this.teacher;}
     public List<Person> getStudentList(){return this.studentList;}
-
+    public void setStudentList(List<Person> studentList) {this.studentList = studentList;}
 }

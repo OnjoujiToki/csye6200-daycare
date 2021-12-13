@@ -1,5 +1,7 @@
 package utility;
 
+import com.opencsv.CSVWriter;
+import edu.neu.csye6200.classes.*;
 import java.io.*;
 import java.util.Scanner;
 
@@ -40,4 +42,30 @@ public class FileUtil {
         }
         return csvFile.toString();
     }
+
+    public static void writeDataLineByLine(Classroom classroom, String fileName)
+    {
+        File file = new File(fileName);
+        try {
+            FileWriter outputfile = new FileWriter(file);
+
+            CSVWriter writer = new CSVWriter(outputfile);
+
+            String[] details = {classroom.getName(), classroom.getTeacher().getName()};
+            writer.writeNext(details);
+            String[] header = { "ID", "Name", "Parent", "Email", "Math", "English", "Chemistry", "Physics", "Java", "Music" };
+            writer.writeNext(header);
+
+            for (Person student:classroom.getStudentList()){
+
+                writer.writeNext(student.dataToStringarray());
+            }
+
+            writer.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+

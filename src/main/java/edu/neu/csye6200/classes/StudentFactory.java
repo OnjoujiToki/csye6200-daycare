@@ -1,5 +1,7 @@
 package edu.neu.csye6200.classes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentFactory {
@@ -10,9 +12,10 @@ public class StudentFactory {
 
     }
 
-    public static Person addObject(String csvFile) {
+    public static List<Person> addObject(String csvFile) {
         String[] fileOutput = csvFile.split("\\r?\\n");
         Person tmpStudent = null;
+        List<Person> tmplist = new ArrayList<>();
         for (String inputLine : fileOutput) {
             Scanner input = new Scanner(inputLine);
             input.useDelimiter(",");
@@ -29,9 +32,9 @@ public class StudentFactory {
             int music = input.nextInt();
 
             tmpStudent = StudentFactory.getObject(id, name, age, parent, email, math, english, chemistry, physics, java, music);
-            School.addStudent(tmpStudent);
-
+//            School.addStudent(tmpStudent);
+            tmplist.add(tmpStudent);
         }
-        return tmpStudent;
+        return tmplist;
     }
 }
