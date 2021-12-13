@@ -47,8 +47,6 @@ public class SubmitView {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Vector<Object> row3 = new Vector<>();
-                // YourType varName = (YourType)comboBox.getSelectedItem();
                 int mathGrade = Integer.parseInt((String) mathCombox.getSelectedItem());
                 int englishGrade = Integer.parseInt((String) englishCombox.getSelectedItem());
                 int chemistryGrade = Integer.parseInt((String) chemistryBox.getSelectedItem());
@@ -74,7 +72,7 @@ public class SubmitView {
                     int curClassIdx = mapStringNumber.convertStringtoNumber(curClass);
                     System.out.println(curClassIdx);
 //                    School.classrooms.get(curClassIdx).studentList.add(new Student(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
-                    School.classrooms.get(curClassIdx).getStudentList().add(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
+//                    School.classrooms.get(curClassIdx).getStudentList().add(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
 //                    DataView.data.addElement(row3);
 //                    DataView.data.length ++;
                     School.addStudent(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));

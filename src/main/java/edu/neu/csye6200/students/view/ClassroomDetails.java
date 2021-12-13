@@ -2,11 +2,9 @@ package edu.neu.csye6200.students.view;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.intellij.uiDesigner.core.Spacer;
 import database.Table;
 import edu.neu.csye6200.classes.Classroom;
 import edu.neu.csye6200.classes.School;
-import edu.neu.csye6200.classes.Teacher;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

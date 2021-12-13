@@ -5,8 +5,6 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import database.Table;
 import edu.neu.csye6200.classes.Person;
 import edu.neu.csye6200.classes.School;
-import edu.neu.csye6200.classes.Student;
-import edu.neu.csye6200.classes.Teacher;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

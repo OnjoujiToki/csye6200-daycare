@@ -48,14 +48,6 @@ public class LoginClick implements ActionListener {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-//            JFrame jFrame = new JFrame("Dashboard");
-////                Dashboard dashboard = new Dashboard();
-//            jFrame.setContentPane(new Dashboard().$$$getRootComponent$$$());
-//            jFrame.pack();
-//            jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-//            jFrame.setVisible(true);
-//            instance.dispose();
-//            instance.setVisible(false);
         }
     }
 

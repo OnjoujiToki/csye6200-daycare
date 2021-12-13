@@ -24,7 +24,7 @@ public class LoginView extends JFrame {
     TrayIcon trayIcon;
     SystemTray systemTray;
     public LoginView() {
-        super("Day Care System");
+        super("School");
         Container contentPane = getContentPane();
         fontSizeInitialization();
         SpringLayoutSetup();

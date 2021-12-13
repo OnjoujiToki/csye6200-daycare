@@ -10,15 +10,15 @@ public class Table extends JTable {
         // Modify Later
         JTableHeader heading = getTableHeader();
         setHeading(heading);
-        setFont(new Font(null, Font.PLAIN, 14));
+        setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         setForeground(Color.black);
         setGridColor(Color.BLACK);
         setRowHeight(30);
         getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
     private void setHeading(JTableHeader heading) {
-        heading.setFont(new Font(null, Font.ITALIC, 16));
-        heading.setForeground(Color.RED);
+        heading.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 18));
+        heading.setForeground(Color.BLACK);
     }
 
 
