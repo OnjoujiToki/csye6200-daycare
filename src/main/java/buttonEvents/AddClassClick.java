@@ -3,6 +3,7 @@ package buttonEvents;
 import edu.neu.csye6200.students.view.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,8 +18,10 @@ public class AddClassClick implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("ADD CLASS Clicked");
-        JFrame jFrame = new JFrame("add");
+        JFrame jFrame = new JFrame("Add Teacher");
+        jFrame.setPreferredSize(new Dimension(500, 600));
+        jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
         jFrame.setContentPane(new AddTeacherView(dataInstance).$$$getRootComponent$$$());
         jFrame.pack();
         jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);

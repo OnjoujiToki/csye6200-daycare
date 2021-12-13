@@ -62,8 +62,9 @@ public class DataView extends JFrame {
     public String[] getColumnsNames() {
         return columnsNames;
     }
-
-    public DataView() {
+    public Dashboard dashboardInstance;
+    public DataView(Dashboard dashboard) {
+        dashboardInstance = dashboard;
         System.out.println("---lenght-----" + studentlist.size());
         Container contentPane = getContentPane();
         DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();

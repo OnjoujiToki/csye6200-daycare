@@ -21,8 +21,16 @@ public class Dashboard extends JFrame {
     private JPanel dashboardPanel;
     private JLabel headingLabel;
 
+    public void setDashboardPanel(Component comp) {
+        this.dashboardPanel.removeAll();
+        this.dashboardPanel.add(comp);
+        this.dashboardPanel.repaint();
+        this.dashboardPanel.revalidate();
+    }
+
     public Dashboard() throws IOException {
         $$$setupUI$$$();
+        Dashboard dashboard = this;
         headingLabel.setFont(new Font("Serif", Font.PLAIN, 20));
         JLabel picLabel = new JLabel();
         BufferedImage myPicture = ImageIO.read(new File("ClassRoom.jpeg"));
@@ -56,7 +64,7 @@ public class Dashboard extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dashboardPanel.removeAll();
-                dashboardPanel.add(new DataView().getContentPane());
+                dashboardPanel.add(new DataView(dashboard).getContentPane());
                 dashboardPanel.repaint();
                 dashboardPanel.revalidate();
             }

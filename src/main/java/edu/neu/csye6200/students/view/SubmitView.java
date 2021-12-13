@@ -84,6 +84,18 @@ public class SubmitView {
                     dataInstance.mainTablemodel.addRow(new Object[]{id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade});
                     System.out.println(DataView.data.length);
                     dataInstance.mainTable.render(columnsNames);
+                    JOptionPane.showMessageDialog(null, "Added student successfully");
+                     idField.setText("");
+                     parentField.setText("");
+                     nameField.setText("");
+                     ageField.setText("");
+                     emailField.setText("");
+                    chemistryBox.setSelectedIndex(0);
+                    englishCombox.setSelectedIndex(0);
+                    physicsBox.setSelectedIndex(0);
+                    musicBox.setSelectedIndex(0);
+                    javaBox.setSelectedIndex(0);
+                    classroomCombobox.setSelectedIndex(0);
                 }
 
             }
@@ -106,7 +118,7 @@ public class SubmitView {
      */
     private void $$$setupUI$$$() {
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayoutManager(13, 3, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel.setLayout(new GridLayoutManager(13, 3, new Insets(16, 16, 16, 16), -1, -1));
         final Spacer spacer1 = new Spacer();
         mainPanel.add(spacer1, new GridConstraints(0, 1, 13, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         idField = new JTextField();

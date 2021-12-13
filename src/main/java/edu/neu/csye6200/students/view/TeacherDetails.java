@@ -53,7 +53,10 @@ public class TeacherDetails extends JFrame {
         addTeacherButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame jFrame = new JFrame("Add ClassRoom");
+                JFrame jFrame = new JFrame("Add Teacher");
+                jFrame.setPreferredSize(new Dimension(500, 600));
+                jFrame.pack();
+                jFrame.setLocationRelativeTo(null);
                 jFrame.setContentPane(new AddTeacherView(teacherDetails).$$$getRootComponent$$$());
                 jFrame.pack();
                 jFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
