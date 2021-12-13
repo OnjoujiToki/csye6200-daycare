@@ -64,12 +64,14 @@ public class DataView extends JFrame {
     }
 
     public DataView() {
-        data = new Object[studentlist.size()][11];
         System.out.println("---lenght-----" + studentlist.size());
         Container contentPane = getContentPane();
         DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
-        defaultComboBoxModel1.addElement("Classroom A");
+        for(Classroom c : School.getClassrooms()){
+            defaultComboBoxModel1.addElement(c.getName());
+        }
         classroomCombox.setModel(defaultComboBoxModel1);
+        classroomCombox.addActionListener(switchButtonClickEvent);
         DefaultComboBoxModel defaultComboBoxModel2 = new DefaultComboBoxModel();
         defaultComboBoxModel2.addElement("30");
         defaultComboBoxModel2.addElement("40");
@@ -116,8 +118,17 @@ public class DataView extends JFrame {
         exportButton.addActionListener(exportButtonClickEvent);
         switchButton.addActionListener(switchButtonClickEvent);
         searchButton.addActionListener(searchButtonClickEvent);
+
+        setData(studentlist, columnsNames);
+        JScrollPane jScrollPane = new JScrollPane(mainTable);
+        contentPane.add(jScrollPane, BorderLayout.CENTER);
+        contentPane.add(dataPanel, BorderLayout.SOUTH);
+    }
+
+    public void setData(List<Person> list,String[] columnNames){
+        data = new Object[list.size()][11];
         int i = 0;
-        for(Person student: studentlist){
+        for(Person student: list){
             data[i][0] = student.getId();
             data[i][1] = student.getName();
             data[i][2] = student.getAge();
@@ -131,12 +142,9 @@ public class DataView extends JFrame {
             data[i][10] = student.getMusic();
             i++;
         }
-        mainTablemodel = TableModel.analyzeData(data, columnsNames);
+        mainTablemodel = TableModel.analyzeData(data, columnNames);
         mainTable.setModel(mainTablemodel);
         mainTable.render(columnsNames);
-        JScrollPane jScrollPane = new JScrollPane(mainTable);
-        contentPane.add(jScrollPane, BorderLayout.CENTER);
-        contentPane.add(dataPanel, BorderLayout.SOUTH);
     }
 
     private void addAllButtons(Container contentPane) {

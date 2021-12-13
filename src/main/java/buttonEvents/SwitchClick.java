@@ -26,10 +26,10 @@ public class SwitchClick implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Switch cliked");
+        System.out.println("Switch clicked");
         // whats next? refresh Jtable by given coressponding combox selection
         String curClassroom = (String) instance.classroomCombox.getSelectedItem();
-        int curIdx = -1;
+        int curIdx = 0;
         if (curClassroom != " ") {
             curIdx = mapStringNumber.convertStringtoNumber(curClassroom);
         } else {
@@ -37,27 +37,11 @@ public class SwitchClick implements ActionListener {
         }
 
         System.out.println(curIdx);
-        Classroom curCr = School.classrooms.get(curIdx);
+
+        instance.setData(School.getStudentsFromClassroom(curClassroom), instance.getColumnsNames());
         // YourType varName = (YourType)comboBox.getSelectedItem();
 //        DataView.data();
-        for (Person s: curCr.getStudentList()) {
-            Vector<Object> curRow = new Vector<>();
-            curRow.addElement(s.getId());
-            curRow.addElement(s.getName());
-            curRow.addElement(s.getParent());
-            curRow.addElement(s.getEmail());
-            curRow.addElement(s.getMath());
-            curRow.addElement(s.getEnglish());
-            curRow.addElement(s.getChemistry());
-            curRow.addElement(s.getPhysics());
-            curRow.addElement(s.getJava());
-            curRow.addElement(s.getMusic());
-//            DataView.data.addElement(curRow);
-        }
-        instance.mainTablemodel = TableModel.analyzeData(DataView.data, instance.getColumnsNames());
-        instance.mainTable.setModel(instance.mainTablemodel);
-//        System.out.println(DataView.data.size());
-        instance.mainTable.render(instance.getColumnsNames());
+
 
     }
 }
