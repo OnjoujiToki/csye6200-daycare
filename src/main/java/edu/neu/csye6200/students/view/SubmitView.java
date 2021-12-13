@@ -74,9 +74,10 @@ public class SubmitView {
 
                 } else {
                     String curClassroom = (String) dataview.classroomCombox.getSelectedItem();
-                    for (Classroom tmpclassroom:School.getClassrooms()){
-                        if (curClassroom==classroom.getName()){
-                            Person tmpstudent = StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade);;
+                    for (Classroom tmpclassroom : School.getClassrooms()) {
+                        if (curClassroom == classroom.getName()) {
+                            Person tmpstudent = StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade);
+                            ;
                             classroom.addStudent(tmpstudent);
                             tmpstudent.setClassroom(tmpclassroom);
                         }
@@ -85,11 +86,11 @@ public class SubmitView {
                     System.out.println(DataView.data.length);
                     dataInstance.mainTable.render(columnsNames);
                     JOptionPane.showMessageDialog(null, "Added student successfully");
-                     idField.setText("");
-                     parentField.setText("");
-                     nameField.setText("");
-                     ageField.setText("");
-                     emailField.setText("");
+                    idField.setText("");
+                    parentField.setText("");
+                    nameField.setText("");
+                    ageField.setText("");
+                    emailField.setText("");
                     chemistryBox.setSelectedIndex(0);
                     englishCombox.setSelectedIndex(0);
                     physicsBox.setSelectedIndex(0);

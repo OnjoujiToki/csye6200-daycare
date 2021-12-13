@@ -30,7 +30,6 @@ public class ImportClick implements ActionListener {
             String csvFile = fileUtil.readCSVFile(f.getName());
             this.instance.dispose();
             String curClassroom = (String) instance.classroomCombox.getSelectedItem();
-            System.out.println("------------djsadjsandas-------" + curClassroom);
             for (Classroom classroom:School.getClassrooms()){
                 if (curClassroom==classroom.getName()){
                     List<Person> tmplist = (StudentFactory.addObject(csvFile));

@@ -58,5 +58,7 @@ public class Classroom {
     public List<Person> getStudentList(){return this.studentList;}
     public void setStudentList(List<Person> studentList) {this.studentList = studentList;}
 
+    public void removeStudent(Person student){this.studentList.remove(student);}
+
 
 }

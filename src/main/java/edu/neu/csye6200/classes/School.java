@@ -33,6 +33,8 @@ public class School {
     public static List<Person> getStudentlist() {return studentlist;}
     public static List<Person> getTeacherlist() {return teacherlist;}
 
+    public static void removeStudent(Person student){studentlist.remove(student);}
+
     public static List<Person> getStudentsFromClassroom(Classroom classroom){
         List<Person> tmplist = new ArrayList<>();
         for (Person student:School.getStudentlist()){
