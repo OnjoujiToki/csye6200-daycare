@@ -34,7 +34,7 @@ public class Dashboard extends JFrame {
         headingLabel.setFont(new Font("Serif", Font.PLAIN, 20));
         JLabel picLabel = new JLabel();
         BufferedImage myPicture = ImageIO.read(new File("ClassRoom.jpeg"));
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(myPicture).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(myPicture).getImage().getScaledInstance(1200, 850, Image.SCALE_SMOOTH));
         picLabel.setIcon(imageIcon);
         dashboardPanel.add(picLabel);
         classroomsButton.addActionListener(new ActionListener() {
@@ -142,7 +142,6 @@ public class Dashboard extends JFrame {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         buttonsPanel.setBounds(10, 10, 500, 1000);
     }
 }
