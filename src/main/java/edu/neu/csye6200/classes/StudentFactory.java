@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class StudentFactory {
     public static Person getObject(int id, String name, int age, String parent, String email, int math, int english, int chemistry, int physics, int java, int music) {
         Person tmpstudent = new Student(id, name, age, email, parent, new Grades(math, english, chemistry, physics, java, music));
+        School.addStudent(tmpstudent);
         return tmpstudent;
 
     }
@@ -31,7 +32,6 @@ public class StudentFactory {
             int music = input.nextInt();
 
             tmpStudent = StudentFactory.getObject(id, name, age, parent, email, math, english, chemistry, physics, java, music);
-            School.addStudent(tmpStudent);
             tmplist.add(tmpStudent);
         }
         return tmplist;

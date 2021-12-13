@@ -3,11 +3,12 @@ package edu.neu.csye6200.students.view;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
-
+import edu.neu.csye6200.classes.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 //import edu.neu.csye6200.classes.Classroom;
 import edu.neu.csye6200.classes.Classroom;
@@ -72,19 +73,14 @@ public class SubmitView {
                     JOptionPane.showMessageDialog(dataview, "your Email seems weird...");
 
                 } else {
-                    String curClass = (String) dataview.classroomCombox.getSelectedItem();
-                    assert curClass != null;
-                    int curClassIdx = mapStringNumber.convertStringtoNumber(curClass);
-                    System.out.println(curClassIdx);
-//                    School.classrooms.get(curClassIdx).studentList.add(new Student(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
-//                    School.classrooms.get(curClassIdx).getStudentList().add(StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade));
-//                    DataView.data.addElement(row3);
-//                    DataView.data.length ++;
-                    Person student = StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade);
-                    student.setClassroom(classroom);
-                    School.addStudent(student);
-//                    dataInstance.mainTablemodel = TableModel.analyzeData(DataView.data);
-//                    dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
+                    String curClassroom = (String) dataview.classroomCombox.getSelectedItem();
+                    for (Classroom tmpclassroom:School.getClassrooms()){
+                        if (curClassroom==classroom.getName()){
+                            Person tmpstudent = StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade);;
+                            classroom.addStudent(tmpstudent);
+                            tmpstudent.setClassroom(tmpclassroom);
+                        }
+                    }
                     dataInstance.mainTablemodel.addRow(new Object[]{id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade});
                     System.out.println(DataView.data.length);
                     dataInstance.mainTable.render(columnsNames);

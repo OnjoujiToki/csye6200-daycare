@@ -28,7 +28,6 @@ public class DeleteClick implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("delete Clicked");
         int getSelectedRowForDeletion = instance.mainTable.getSelectedRow();
-        //Check if their is a row selected
         if (getSelectedRowForDeletion != -1) {
             instance.mainTablemodel.removeRow(getSelectedRowForDeletion);
             JOptionPane.showMessageDialog(null, "Row Deleted");

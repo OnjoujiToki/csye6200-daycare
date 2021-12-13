@@ -54,8 +54,8 @@ public class Student extends Person{
 
         tmp[0] = String.valueOf(getId());
         tmp[1] = getName();
-        tmp[2] = getParent();
-        tmp[3] = String.valueOf(getAge());
+        tmp[2] = String.valueOf(getAge());
+        tmp[3] = getParent();
         tmp[4] = getEmail();
         tmp[5] = String.valueOf(getMath());
         tmp[6] = String.valueOf(getEnglish());
