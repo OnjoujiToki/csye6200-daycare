@@ -1,34 +1,45 @@
-Current to-do list
-1. Find a decent image icon!!!
-2. add copyrights and license label in the login view
-3. add "tap Enter to login function" and also " tap Enter to Confirm function"
-4. A bunch of buttons..
+#  Student Management System
+
+### Teammates:
+
+- Sri Ratna Akkineni 
+- Meghana Palagani 
+- Abhilash Reddy Devarinti 
+- Jeffrey Machyo 
+- Tanwar Chandrabhan 
+- Zhang Zhihao 
 
 
 
-To-do at the end
-1. add As many as final we can
-General Parts:
-
-1. Back-end Implementation
-
-   - Objects
-
-     1. Students.
-
-     2. teachers 
-
-     3. DayCare Ratio Rules Groups (of Students to Teacher) to Classroom
-
-        
-
-     
+### Summary:
 
 
 
-2. Front-end Implementation
-   - Enroll students: add student and parents information. CSV or Database
-   - Track annual registration renewal
-   - Track immunization anniversaries
 
-​		
+
+
+
+### Design Pattern:
+
+​	We demonstrate the following design patterns:
+
+1. Singleton 
+
+   We applied singleton design pattern in School class, we made one instance inside Dataview and use functions, for example, via calling `SchoolInstance.printStudentInformatoin`.
+
+2. Factory Method 
+
+   We applied factory method inside StudentFactory.class. We treat it as a factory, and produce Person class into factory.
+
+
+
+### Object-Oriented Principles:
+
+​	We demonstrate all four object-oriented principles via..
+
+
+
+### Loose Coupling
+
+We made our program Loose Coupling. 
+
