@@ -16,6 +16,14 @@ public class Classroom {
         this.teacher = headTeacher;
     }
 
+    public Classroom(){
+        int i = School.getClassrooms().size()+65;
+        int j = School.getClassrooms().size();
+        char l = (char)i;
+        this.name="Classroom "+l;
+        studentList=new ArrayList<>();
+        this.teacher=School.getTeacherlist().get(j);
+    }
 
     public Classroom(Teacher headTeacher) {
         this.teacher = headTeacher;
