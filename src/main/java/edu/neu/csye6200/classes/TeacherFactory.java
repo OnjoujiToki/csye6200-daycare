@@ -32,6 +32,6 @@ public class TeacherFactory {
         return tmpTeacher;
     }
     public static Teacher getObject(int id, String name, String email, int salary, int age){
-        return new Teacher(id, name, email, salary, age);
+        return new Teacher(id, email, name, salary, age);
     }
 }

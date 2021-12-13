@@ -27,10 +27,10 @@ public class SearchClick implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("Search Clicked");
 
-        dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data);
+        dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data, dataInstance.getColumnsNames());
         dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
         System.out.println(dataInstance.data.length);
-        dataInstance.mainTable.render2();
+        dataInstance.mainTable.render2(dataInstance.getColumnsNames());
     }
 
 }

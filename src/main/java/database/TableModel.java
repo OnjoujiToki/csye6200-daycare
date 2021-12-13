@@ -4,7 +4,7 @@ import javax.swing.table.DefaultTableModel;
 import java.util.Vector;
 
 public class TableModel extends DefaultTableModel {
-    static String[] columnsNames = {"Id", "Name", "Age", "Parent Name", "Email", "Math", "English", "Chemistry", "Physics", "Java", "Music"};
+//    static String[] columnsNames = {"Id", "Name", "Age", "Parent Name", "Email", "Math", "English", "Chemistry", "Physics", "Java", "Music"};
 //    static Vector<String> columnsNames = new Vector<>();
 //    static {
 //        columnsNames.addElement("ID");
@@ -18,8 +18,11 @@ public class TableModel extends DefaultTableModel {
 //        columnsNames.addElement("Java");
 //        columnsNames.addElement("Music");
 //    }
-    private TableModel() {
+    public TableModel(String[] columnsNames) {
         super(null, columnsNames);
+    }
+
+    public TableModel() {
     }
 
     public boolean isCellEditable(int row, int col) {
@@ -30,13 +33,13 @@ public class TableModel extends DefaultTableModel {
 
     private static final TableModel tableModel = new TableModel();
 
-    public static TableModel analyzeData(Object[][] data) {
+    public static TableModel analyzeData(Object[][] data, String[] columnsNames) {
         tableModel.setDataVector(data, columnsNames);
         return tableModel;
     }
-    public static String[] getColumns() {
-        return columnsNames;
-    }
+//    public static String[] getColumns() {
+//        return columnsNames;
+//    }
 
     private void printDebugData() {
         int numRows = getRowCount();

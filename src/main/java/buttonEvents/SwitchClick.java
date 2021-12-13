@@ -54,10 +54,10 @@ public class SwitchClick implements ActionListener {
             curRow.addElement(s.getMusic());
 //            DataView.data.addElement(curRow);
         }
-        instance.mainTablemodel = TableModel.analyzeData(DataView.data);
+        instance.mainTablemodel = TableModel.analyzeData(DataView.data, instance.getColumnsNames());
         instance.mainTable.setModel(instance.mainTablemodel);
 //        System.out.println(DataView.data.size());
-        instance.mainTable.render();
+        instance.mainTable.render(instance.getColumnsNames());
 
     }
 }

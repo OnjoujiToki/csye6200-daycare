@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 import static edu.neu.csye6200.classes.School.studentlist;
 
 public class DataView extends JFrame {
+    private String[] columnsNames = {"Id", "Name", "Age", "Parent Name", "Email", "Math", "English", "Chemistry", "Physics", "Java", "Music"};
     JLabel titleLabel = new JLabel("Day Care System", JLabel.CENTER);
     public JPanel operationPanel = new JPanel();
     public JPanel dataPanel = new JPanel(new FlowLayout((FlowLayout.RIGHT)));
@@ -38,14 +39,14 @@ public class DataView extends JFrame {
     JButton searchButton = new JButton("Set this Score As Pass");
     JButton nextButton = new JButton("Next");
     JButton preButton = new JButton("Last");
-    AddClassClick addClassButtonClickEvent = new AddClassClick(this);
+//    AddClassClick addClassButtonClickEvent = new AddClassClick(this);
     AddButtonClick addButtonClickEvent = new AddButtonClick(this);
     DeleteClick deleteButtonClickEvent = new DeleteClick(this);
     ImportClick importButtonClickEvent = new ImportClick(this);
     ExportClick exportButtonClickEvent = new ExportClick(this);
     SwitchClick switchButtonClickEvent = new SwitchClick(this);
     SearchClick searchButtonClickEvent = new SearchClick(this);
-    AddClassroomClick addClassroomClickEvent = new AddClassroomClick(this);
+//    AddClassroomClick addClassroomClickEvent = new AddClassroomClick(this);
     TrayIcon trayIcon;
 
     public static Vector<Object> data1 = new Vector<>();
@@ -57,6 +58,11 @@ public class DataView extends JFrame {
     public static TableModel mainTablemodel;
     Vector<Object> row1 = new Vector<>();
     SystemTray systemTray;
+
+    public String[] getColumnsNames() {
+        return columnsNames;
+    }
+
     public DataView() {
         data = new Object[studentlist.size()][11];
         System.out.println("---lenght-----" + studentlist.size());
@@ -88,10 +94,10 @@ public class DataView extends JFrame {
         setIconImage(iconImage);
 
         // set window
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setVisible(true);
-        setResizable(true); // make it nonchangeable
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // exit when closing
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        setVisible(true);
+//        setResizable(true); // make it nonchangeable
+//        setDefaultCloseOperation(EXIT_ON_CLOSE); // exit when closing
         Dimension curScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((curScreenSize.width - 600) / 2, (curScreenSize.height - 400) / 2);
 
@@ -103,16 +109,13 @@ public class DataView extends JFrame {
         // Classroom csye6200 = Classroom.getInstance();
         // csye6200.printStudentsInformation();
         addButton.addActionListener(addButtonClickEvent);
-        addClassButton.addActionListener(addClassButtonClickEvent);
-        addClassRoomButton.addActionListener(addClassroomClickEvent);
+//        addClassButton.addActionListener(addClassButtonClickEvent);
+//        addClassRoomButton.addActionListener(addClassroomClickEvent);
         deleteButton.addActionListener(deleteButtonClickEvent);
         importButton.addActionListener(importButtonClickEvent);
         exportButton.addActionListener(exportButtonClickEvent);
         switchButton.addActionListener(switchButtonClickEvent);
         searchButton.addActionListener(searchButtonClickEvent);
-        School neu = School.getInstance();
-        School.classrooms.add(new Classroom("Class1",new Teacher(0, "First Teacher", "firstteacher@email", 32, 3232)));
-        neu.printClassroominformation();
         int i = 0;
         for(Person student: studentlist){
             data[i][0] = student.getId();
@@ -128,11 +131,9 @@ public class DataView extends JFrame {
             data[i][10] = student.getMusic();
             i++;
         }
-//        data1.addAll(studentList);
-//        data.stream().map(n -> new Vector<Object>(data1));
-        mainTablemodel = TableModel.analyzeData(data);
+        mainTablemodel = TableModel.analyzeData(data, columnsNames);
         mainTable.setModel(mainTablemodel);
-        mainTable.render();
+        mainTable.render(columnsNames);
         JScrollPane jScrollPane = new JScrollPane(mainTable);
         contentPane.add(jScrollPane, BorderLayout.CENTER);
         contentPane.add(dataPanel, BorderLayout.SOUTH);

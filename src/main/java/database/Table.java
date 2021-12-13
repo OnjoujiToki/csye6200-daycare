@@ -22,8 +22,8 @@ public class Table extends JTable {
     }
 
 
-    public void render() {
-        String[] columnName = TableModel.getColumns();
+    public void render(String[] columnNames) {
+        String[] columnName = columnNames;
         TableProperty property = new TableProperty();
         for (int i = 0; i < columnName.length; i++) {
             TableColumn cur = getColumn(columnName[i]);
@@ -36,8 +36,8 @@ public class Table extends JTable {
         }
     }
 
-    public void render2() {
-        String[] columnName = TableModel.getColumns();
+    public void render2(String[] columnNames) {
+        String[] columnName = columnNames;
         TableProperty property = new TableProperty();
         System.out.println("Entered Render2");
         for (int i = 0; i < columnName.length; i++) {

@@ -40,6 +40,7 @@ public class SubmitView {
     private JLabel musicLabel;
     private JButton submitButton;
     private final DataView dataInstance;
+    private String[] columnsNames = {"Id", "Name", "Age", "Parent Name", "Email", "Math", "English", "Chemistry", "Physics", "Java", "Music"};
 
     public SubmitView(DataView dataview) {
         this.dataInstance = dataview;
@@ -60,17 +61,6 @@ public class SubmitView {
                 String email = emailField.getText();
                 String name = nameField.getText();
                 System.out.println(name);
-//                row3.addElement(id);
-//                row3.addElement(name);
-//                row3.addElement(age);
-//                row3.addElement(parentName);
-//                row3.addElement(email);
-//                row3.addElement(mathGrade);
-//                row3.addElement(englishGrade);
-//                row3.addElement(chemistryGrade);
-//                row3.addElement(physicsGrade);
-//                row3.addElement(javaGrade);
-//                row3.addElement(musicGrade);
 
                 EmailValidator emailValidator = new EmailValidator();
 
@@ -93,7 +83,7 @@ public class SubmitView {
 //                    dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
                     dataInstance.mainTablemodel.addRow(new Object[]{id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade});
                     System.out.println(DataView.data.length);
-                    dataInstance.mainTable.render();
+                    dataInstance.mainTable.render(columnsNames);
                 }
 
             }

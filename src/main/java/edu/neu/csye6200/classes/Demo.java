@@ -18,6 +18,9 @@ public class Demo {
          StudentFactory.addObject(studentCsvFile);
         String teacherCsvFile = fileUtil.readCSVFile("Teachers.csv");
         TeacherFactory.getInstance().addObject(teacherCsvFile);
+        School.classrooms.add(new Classroom("ClassName", new Teacher(1, "ks@gmail.com", "Katherine", 23, 323)));
+//        School.addTeacher(new Teacher(1, "asr@gmail.com", "dbshdh", 89, 1000));
+
     }
 //    public String readStudentsFromFile(){
 //

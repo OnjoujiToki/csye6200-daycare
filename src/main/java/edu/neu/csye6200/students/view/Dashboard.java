@@ -3,27 +3,39 @@ package edu.neu.csye6200.students.view;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Dashboard extends JFrame {
     private JPanel jPanel1;
-    private JLabel headingLabel;
     private JButton studentsButton;
     private JButton teachersButton;
     private JButton classroomsButton;
+    private JPanel buttonsPanel;
+    private JPanel dashboardPanel;
+    private JLabel headingLabel;
 
-    public Dashboard() {
+    public Dashboard() throws IOException {
+        headingLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+        JLabel picLabel = new JLabel();
+        BufferedImage myPicture = ImageIO.read(new File("ClassRoom.jpeg"));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(myPicture).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
+        picLabel.setIcon(imageIcon);
+        dashboardPanel.add(picLabel);
         classroomsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-////                JFrame jFrame = new JFrame("ClassRoom Details");
-//                setContentPane(new ClassroomDetails().$$$getRootComponent$$$());
-//                pack();
-//                setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-                new ClassroomDetails();
+                dashboardPanel.removeAll();
+                dashboardPanel.add(new ClassroomDetails().$$$getRootComponent$$$());
+                dashboardPanel.repaint();
+                dashboardPanel.revalidate();
+//                new ClassroomDetails();
             }
         });
         teachersButton.addActionListener(new ActionListener() {
@@ -33,13 +45,19 @@ public class Dashboard extends JFrame {
 //                setContentPane(new ClassroomDetails().$$$getRootComponent$$$());
 //                pack();
 //                setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-                new TeacherDetails();
+                dashboardPanel.removeAll();
+                dashboardPanel.add(new TeacherDetails().$$$getRootComponent$$$());
+                dashboardPanel.repaint();
+                dashboardPanel.revalidate();
             }
         });
         studentsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new DataView();
+                dashboardPanel.removeAll();
+                dashboardPanel.add(new DataView().getContentPane());
+                dashboardPanel.repaint();
+                dashboardPanel.revalidate();
             }
         });
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -68,24 +86,30 @@ public class Dashboard extends JFrame {
      */
     private void $$$setupUI$$$() {
         jPanel1 = new JPanel();
-        jPanel1.setLayout(new GridLayoutManager(7, 2, new Insets(32, 32, 32, 32), -1, -1, true, false));
+        jPanel1.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
         jPanel1.setMinimumSize(new Dimension(1000, 174));
         jPanel1.setPreferredSize(new Dimension(1000, 400));
-        headingLabel = new JLabel();
-        headingLabel.setText("Student Management System");
-        jPanel1.add(headingLabel, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        studentsButton = new JButton();
-        studentsButton.setMargin(new Insets(24, 24, 24, 24));
-        studentsButton.setText("Students");
-        jPanel1.add(studentsButton, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
+        buttonsPanel.setBackground(new Color(-15843775));
+        jPanel1.add(buttonsPanel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(50, 50), null, 0, true));
         classroomsButton = new JButton();
-        classroomsButton.setMargin(new Insets(24, 24, 24, 24));
         classroomsButton.setText("Classrooms");
-        jPanel1.add(classroomsButton, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        buttonsPanel.add(classroomsButton, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        studentsButton = new JButton();
+        studentsButton.setText("Students");
+        buttonsPanel.add(studentsButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         teachersButton = new JButton();
-        teachersButton.setMargin(new Insets(24, 24, 24, 24));
         teachersButton.setText("Teachers");
-        jPanel1.add(teachersButton, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        buttonsPanel.add(teachersButton, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        headingLabel = new JLabel();
+        headingLabel.setBackground(new Color(-3809828));
+        headingLabel.setForeground(new Color(-2757670));
+        headingLabel.setText("Student Management System");
+        buttonsPanel.add(headingLabel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        dashboardPanel = new JPanel();
+        dashboardPanel.setLayout(new CardLayout(0, 0));
+        jPanel1.add(dashboardPanel, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
     }
 
     /**

@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -42,7 +43,11 @@ public class LoginClick implements ActionListener {
             JOptionPane.showMessageDialog(instance, "User name or password is wrong!");
         } else {
             // enter into the main panel
-            new Dashboard();
+            try {
+                new Dashboard();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
 //            JFrame jFrame = new JFrame("Dashboard");
 ////                Dashboard dashboard = new Dashboard();
 //            jFrame.setContentPane(new Dashboard().$$$getRootComponent$$$());

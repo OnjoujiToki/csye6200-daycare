@@ -31,10 +31,10 @@ public class SubmitClick implements ActionListener {
 
 
         // instance.mainTablemodel.fireTableDataChanged();
-        dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data);
+        dataInstance.mainTablemodel = TableModel.analyzeData(dataInstance.data, dataInstance.getColumnsNames());
         dataInstance.mainTable.setModel(dataInstance.mainTablemodel);
         System.out.println(dataInstance.data.length);
-        dataInstance.mainTable.render();
+        dataInstance.mainTable.render(dataInstance.getColumnsNames());
     }
 
 }
