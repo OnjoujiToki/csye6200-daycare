@@ -28,5 +28,16 @@ public class Classroom {
     public void addStudent(Student newStudent) {
         studentList.add(newStudent);
     }
+<<<<<<< Updated upstream
+=======
+    public void setTeacher(Teacher newTeacher) {
+        this.teacher=newTeacher;
+    }
+    public void setStudentList(List<Person> studentList) {this.studentList = studentList;}
+
+    public String getName(){return this.name;}
+    public Teacher getTeacher(){return this.teacher;}
+    public List<Person> getStudentList(){return this.studentList;}
+>>>>>>> Stashed changes
 
 }

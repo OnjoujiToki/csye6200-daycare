@@ -28,6 +28,7 @@ public class Teacher extends Person{
     }
 
     @Override
+<<<<<<< Updated upstream
     String getEmail() {
         return this.email;
     }
@@ -37,6 +38,20 @@ public class Teacher extends Person{
     LocalDate getEnterTime() {
         return this.enterTime;
     }
+=======
+    public String[] dataToStringarray() {return new String[0];}
+
+//    public Vector<Person> getStudents(){
+//        Vector<Person> templist = new Vector<>();
+//        for(Person student:School.studentlist){
+//            if (student.getTeacher().getName()==this.getName()){
+//                templist.add(student);
+//            }
+//        }
+//        return templist;
+//
+//    }
+>>>>>>> Stashed changes
 
 
 }

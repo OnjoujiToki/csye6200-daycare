@@ -13,6 +13,43 @@
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
 
+    <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.opencsv</groupId>-->
+<!--            <artifactId>opencsv</artifactId>-->
+<!--            <version>5.5.2</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${basedir}\opencsv-5.5.2.jar</systemPath>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.5.2</version>
+        </dependency>
+    </dependencies>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>maven-bundle-plugin</artifactId>
+            <extensions>true</extensions>
+            <configuration>
+                <instructions>
+                    <Import-Package>
+                        !org.apache.log,
+                        !org.apache.avalon.framework.logger
+                    </Import-Package>
+                    <Embed-Dependency>*;
+                        |opencsv
+                    </Embed-Dependency>
+                    <Embed-Transitive>true</Embed-Transitive>
+                </instructions>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+
 
 </project>
 
