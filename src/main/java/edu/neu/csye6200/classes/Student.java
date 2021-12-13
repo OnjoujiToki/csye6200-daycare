@@ -48,7 +48,39 @@ public class Student extends Person{
         }
         return null;
     }
+    public String[] dataToStringarray(){
 
+        String[] tmp = new String[11];
+
+        tmp[0] = String.valueOf(getId());
+        tmp[1] = getName();
+        tmp[2] = getParent();
+        tmp[3] = String.valueOf(getAge());
+        tmp[4] = getEmail();
+        tmp[5] = String.valueOf(getMath());
+        tmp[6] = String.valueOf(getEnglish());
+        tmp[7] = String.valueOf(getChemistry());
+        tmp[8] = String.valueOf(getPhysics());
+        tmp[9] = String.valueOf(getJava());
+        tmp[10] = String.valueOf(getMusic());
+
+        return tmp;
+    }
+
+    public float getAverage(){
+        return (this.getMath()+this.getEnglish()+this.getChemistry()+this.getPhysics()+this.getJava()+this.getMath())/6;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder outdata = new StringBuilder();
+
+        outdata.append(" [ID]: # ").append(getId()).append(" [Name]:  ").append(getName()).append("\n");
+        outdata.append(" [Age]: ").append(getAge()).append(" [Parent]: ").append(getParent()).append("\n");
+        outdata.append(" [Average]: ").append(getAverage()).append("\n");
+
+        return outdata.toString();
+    }
 
 
 

@@ -45,5 +45,5 @@ public abstract class Person {
     public abstract void setMusic(int music);
     public int getSalary(){return 0;};
     public void setSalary(int salary){};
-//    public abstract
+    public abstract String[] dataToStringarray();
 }

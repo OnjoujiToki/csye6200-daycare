@@ -14,13 +14,33 @@ public class Demo {
     public void run() {
         new LoginView();
         School.getInstance();
-        String studentCsvFile = fileUtil.readCSVFile("Students.csv");
-         StudentFactory.addObject(studentCsvFile);
         String teacherCsvFile = fileUtil.readCSVFile("Teachers.csv");
         TeacherFactory.getInstance().addObject(teacherCsvFile);
-        School.classrooms.add(new Classroom("ClassName", new Teacher(1, "ks@gmail.com", "Katherine", 23, 323)));
-//        School.addTeacher(new Teacher(1, "asr@gmail.com", "dbshdh", 89, 1000));
 
+        int numberOfClassrooms = 2; //Change this for changing number of initialised objects
+
+        for (int k = 0, j = 1, i=65; k < numberOfClassrooms; k++, j++, i++) {
+            char l =(char)i;
+            String tmpname = "Classroom " + l;
+            Classroom a = new Classroom(tmpname, (Teacher) School.getTeacherlist().get(k));
+            School.addClassroom(a);
+            System.out.println(j);
+            String tmpfileName = "Students" + j + ".csv";
+            String studentCsvFile = fileUtil.readCSVFile(tmpfileName);
+            List<Person> tmplist = (StudentFactory.addObject(studentCsvFile));
+            a.setStudentList(tmplist);
+            for (Person student : tmplist) {
+                student.setClassroom(a);
+            }
+        }
+
+        for (Classroom classroom : School.getClassrooms()) {
+            for (Person student : School.getStudentlist()) {
+                if (student.getClassroom().getName() == classroom.getName()) {
+                    System.out.println(student.getClassroom().getName());
+                }
+            }
+        }
     }
 //    public String readStudentsFromFile(){
 //

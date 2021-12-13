@@ -20,16 +20,8 @@ public class Teacher extends Person{
     @Override
     public void setSalary(int salary) {this.salary = salary;}
 
-//    public Vector<Person> getStudents(){
-//        Vector<Person> templist = new Vector<>();
-//        for(Person student:School.studentlist){
-//            if (student.getTeacher().getName()==this.getName()){
-//                templist.add(student);
-//            }
-//        }
-//        return templist;
-//
-//    }
+    @Override
+    public String[] dataToStringarray() {return new String[0];}
 
     @Override public String getParent() {return null;}
     @Override public void setParent(String parent) {}
@@ -48,8 +40,5 @@ public class Teacher extends Person{
     @Override public Classroom getClassroom() {return null;}
     @Override public void setClassroom(Classroom classroom) {}
 
-//    @Override
-//    public Teacher getTeacher() {return null;}
-//    @Override
-//    public void setTeacher(Teacher teacher) {}
+
 }
