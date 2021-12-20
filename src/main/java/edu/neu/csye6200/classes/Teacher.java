@@ -40,5 +40,16 @@ public class Teacher extends Person{
     @Override public Classroom getClassroom() {return null;}
     @Override public void setClassroom(Classroom classroom) {}
 
+    public String[] dataToStringarrayteacher(){
 
+        String[] tmp = new String[6];
+
+        tmp[0] = String.valueOf(getId());
+        tmp[1] = getName();
+        tmp[2] = String.valueOf(getAge());
+        tmp[3] = getEmail();
+        tmp[4] = String.valueOf(getSalary());
+
+        return tmp;
+    }
 }

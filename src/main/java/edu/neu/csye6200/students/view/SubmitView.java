@@ -75,7 +75,7 @@ public class SubmitView {
                 } else {
                     String curClassroom = (String) dataview.classroomCombox.getSelectedItem();
                     for (Classroom tmpclassroom : School.getClassrooms()) {
-                        if (curClassroom == classroom.getName()) {
+                        if (curClassroom == tmpclassroom.getName()) {
                             Person tmpstudent = StudentFactory.getObject(id, name, age, parentName, email, mathGrade, englishGrade, chemistryGrade, physicsGrade, javaGrade, musicGrade);
                             ;
                             classroom.addStudent(tmpstudent);

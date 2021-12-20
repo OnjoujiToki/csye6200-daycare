@@ -26,9 +26,10 @@ public class TeacherFactory {
             input.useDelimiter(",");
             int id = input.nextInt();
             String name = input.next();
-            int age = input.nextInt();
-            String email = input.next();
             int salary = input.nextInt();
+            String email = input.next();
+            int age = input.nextInt();
+
             tmpTeacher = TeacherFactory.getObject(id, name, email, salary, age);
             tmplist.add(tmpTeacher);
         }

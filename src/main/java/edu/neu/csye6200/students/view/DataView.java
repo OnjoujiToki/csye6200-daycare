@@ -5,19 +5,18 @@ import database.TableModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Vector;
-import java.util.List;
+import java.util.*;
+
 import edu.neu.csye6200.classes.*;
 
 import database.Table;
 
 import java.awt.event.*;
 import java.net.URL;
+import java.util.List;
 import java.util.stream.Collectors;
 
-import static edu.neu.csye6200.classes.School.studentlist;
+
 
 public class DataView extends JFrame {
     private String[] columnsNames = {"Id", "Name", "Age", "Parent Name", "Email", "Math", "English", "Chemistry", "Physics", "Java", "Music"};
@@ -65,7 +64,7 @@ public class DataView extends JFrame {
     public Dashboard dashboardInstance;
     public DataView(Dashboard dashboard) {
         dashboardInstance = dashboard;
-        System.out.println("---lenght-----" + studentlist.size());
+      //  System.out.println("---lenght-----" + studentlist.size());
         Container contentPane = getContentPane();
         DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
         for(Classroom c : School.getClassrooms()){
@@ -96,11 +95,7 @@ public class DataView extends JFrame {
         // set icon image for Windows operating system;
         setIconImage(iconImage);
 
-        // set window
-//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        setVisible(true);
-//        setResizable(true); // make it nonchangeable
-//        setDefaultCloseOperation(EXIT_ON_CLOSE); // exit when closing
+
         Dimension curScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((curScreenSize.width - 600) / 2, (curScreenSize.height - 400) / 2);
 
@@ -108,19 +103,25 @@ public class DataView extends JFrame {
         SystemTraySupportWindowsOS(iconImage);
 
 
-        // Button Events
-        // Classroom csye6200 = Classroom.getInstance();
-        // csye6200.printStudentsInformation();
+
         addButton.addActionListener(addButtonClickEvent);
-//        addClassButton.addActionListener(addClassButtonClickEvent);
-//        addClassRoomButton.addActionListener(addClassroomClickEvent);
         deleteButton.addActionListener(deleteButtonClickEvent);
         importButton.addActionListener(importButtonClickEvent);
         exportButton.addActionListener(exportButtonClickEvent);
 //        switchButton.addActionListener(switchButtonClickEvent);
 //        searchButton.addActionListener(searchButtonClickEvent);
 
-        setData(studentlist, columnsNames);
+//        List<Person> tmpStudentlist = new ArrayList<>();
+//        tmpStudentlist=School.getStudentlist();
+//        System.out.println("student list size = "+tmpStudentlist.size());
+//        List<Person> tmplist = new ArrayList<>();
+//        for(Person student:tmpStudentlist){
+//            if (student.getClassroom().getName()=="Classroom A"){
+//                tmplist.add(student);
+//            }
+//        }
+        Classroom temp = School.getClassrooms().get(0);
+        setData(temp.getStudentList(), columnsNames);
         JScrollPane jScrollPane = new JScrollPane(mainTable);
         contentPane.add(jScrollPane, BorderLayout.CENTER);
         contentPane.add(dataPanel, BorderLayout.SOUTH);

@@ -40,6 +40,17 @@ public class Student extends Person{
     public int getMusic() {return grades.getMusic();}
     public void setMusic(int music) {grades.setMusic(music);}
 
+    @Override
+    public int getSalary() {
+        return 0;
+    }
+
+    @Override
+    public void setSalary(int salary) {
+
+    }
+
+
     public Person getTeacher(){
         for (Person teacher:School.getTeacherlist()){
             if (teacher.getClassroom().getName()==this.getClassroom().getName()){
@@ -65,6 +76,11 @@ public class Student extends Person{
         tmp[10] = String.valueOf(getMusic());
 
         return tmp;
+    }
+
+    @Override
+    public String[] dataToStringarrayteacher() {
+        return new String[0];
     }
 
     public float getAverage(){

@@ -6,6 +6,7 @@ import utility.FileUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.zip.CheckedInputStream;
 
 public class Demo {
 
@@ -16,7 +17,7 @@ public class Demo {
         String teacherCsvFile = fileUtil.readCSVFile("Teachers.csv");
         TeacherFactory.getInstance().addObject(teacherCsvFile);
 
-        int numberOfClassrooms = 2; //Change this for changing number of initialised objects
+        int numberOfClassrooms =  CheckClassNumber.getQuantity(); //Change this for changing number of initialised objects
 
         for (int k = 0, j = 1, i=65; k < numberOfClassrooms; k++, j++, i++) {
             char l =(char)i;
@@ -40,5 +41,10 @@ public class Demo {
                 }
             }
         }
+        //String tmpstring = CheckClassNumber.getQuantity();
+        //System.out.println(tmpstring);
+        //int tmp = Integer.parseInt(tmpstring);
+
+       // System.out.println(CheckClassNumber.getClassroomsquantity());
     }
 }

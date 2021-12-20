@@ -27,7 +27,7 @@ public class TeacherDetails extends JFrame {
         teacherDetails = this;
         $$$setupUI$$$();
         for (Person teacher : School.teacherlist) {
-            System.out.println("tache" + teacher.getName());
+            System.out.println("teacher: " + teacher.getName());
         }
         Object[][] teacherObject = new Object[School.teacherlist.size()][5];
         int i = 0;

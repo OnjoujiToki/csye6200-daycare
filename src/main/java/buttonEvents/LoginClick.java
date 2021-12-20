@@ -28,11 +28,11 @@ public class LoginClick implements ActionListener {
         System.out.println("Login Clicked");
         instance.dispose();
         boolean correctUserName = false;
-        if (Objects.equals(instance.getUserFieldInput(), "1"))  {
+        if (Objects.equals(instance.getUserFieldInput(), "sysadmin"))  {
             System.out.println("Correct UserName Entered");
             correctUserName = true;
         }
-        String str = "1";
+        String str = "sysadmin";
         char[] realPassword = str.toCharArray();
         boolean correctPassword = false;
         if (Arrays.equals(instance.getPassword(), realPassword)) {

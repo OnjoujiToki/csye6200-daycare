@@ -20,7 +20,6 @@ public class FileUtil {
             bufferedWriter.flush();
             bufferedWriter.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -54,14 +53,33 @@ public class FileUtil {
                     CSVWriter.DEFAULT_ESCAPE_CHARACTER,
                     CSVWriter.DEFAULT_LINE_END);
 
-           // String[] details = {classroom.getName(), classroom.getTeacher().getName()};
-            //writer.writeNext(details);
-            //String[] header = { "ID", "Name", "Parent", "Email", "Math", "English", "Chemistry", "Physics", "Java", "Music" };
-            //writer.writeNext(header);
+
 
             for (Person student:classroom.getStudentList()){
 
                 writer.writeNext(student.dataToStringarray());
+            }
+
+            writer.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writeDataLineByLineTeacher(String fileName)
+    {
+        File file = new File(fileName);
+        try {
+            FileWriter outputfile = new FileWriter(file);
+
+            CSVWriter writer = new CSVWriter(outputfile, ',',
+                    CSVWriter.NO_QUOTE_CHARACTER,
+                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                    CSVWriter.DEFAULT_LINE_END);
+
+            for(Person teacher:School.getTeacherlist()){
+
+                    writer.writeNext(teacher.dataToStringarrayteacher());
             }
 
             writer.close();

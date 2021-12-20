@@ -18,7 +18,7 @@ public class ExportClick implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("export Clicked");
-
+        FileUtil.writeDataLineByLineTeacher("Teachers.csv");
         String curClassroom = (String) instance.classroomCombox.getSelectedItem();
         for (Classroom classroom : School.getClassrooms()) {
             if (curClassroom == classroom.getName()) {

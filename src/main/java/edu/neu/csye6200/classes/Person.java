@@ -43,7 +43,9 @@ public abstract class Person {
     public abstract void setJava(int javava);
     public abstract int getMusic();
     public abstract void setMusic(int music);
-    public int getSalary(){return 0;};
-    public void setSalary(int salary){};
+    public abstract int getSalary();
+    public abstract void setSalary(int salary);{}
     public abstract String[] dataToStringarray();
-}
+    public abstract String[] dataToStringarrayteacher();
+
+    }
